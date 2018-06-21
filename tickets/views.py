@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
+from .models import Ticket
 
-# Create your views here.
+
+def get_tickets(request):
+	results = Ticket.objects.all()
+	return render(request, 'ticket_list.html', {'tickets': results})

@@ -7,7 +7,7 @@ TICKET_VARIETIES_CHOICES=(
 	)
 
 class Ticket(models.Model):
-	variety = models.CharField(max_length=1, choices=TICKET_VARIETIES_CHOICES, blank=False)
+	variety = models.CharField(max_length=7, choices=TICKET_VARIETIES_CHOICES, blank=False)
 	upvotes = models.IntegerField(default=0)
 	date_created = models.DateField(auto_now_add=True)
 	date_verified = models.DateField(null=True)
@@ -18,4 +18,4 @@ class Ticket(models.Model):
 	description = models.TextField(blank=True)
 
 	def __str__(self):
-		return "{0}, {1}, {2}".format(str(self.id), self.issue, self.status)
+		return "Ticket #{0}, type: {1}, {2}".format(str(self.id), self.variety, self.status)

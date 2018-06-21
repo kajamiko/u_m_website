@@ -1,0 +1,24 @@
+{% if tickets %}
+<table>
+<tr>
+	<th>Ticket</th>
+	<th>Issue</th>
+	<th>Verified</th>
+	<th>Status</th>
+</tr>
+<tr>
+{% for ticket in tickets %}
+ <td>#{{ ticket.id }}</td>
+ <td>  {{ ticket.issue }} </td>
+ {% if ticket.verified %}
+ <td>Yes </td>
+ {% else%}
+ <td> No </td>
+ {% endif %}
+ <td>{{ ticket.status }}</td>
+ </tr> 
+{% endfor %}
+</table>
+{% else %}
+<p>No tickets</p>
+{% endif %}
