@@ -1,2 +1,5 @@
 db.sqlite3
-usos_modern/
+__pycache__/
+tickets/migrations/
+*.pyc
+*.pyo

@@ -18,4 +18,8 @@ class Ticket(models.Model):
 	description = models.TextField(blank=True)
 
 	def __str__(self):
-		return "Ticket #{0}, type: {1}, {2}".format(str(self.id), self.variety, self.status)
+		return "Ticket #{0}, type: {1}, {2}, {3} upvotes".format(str(self.id), self.variety, self.status, self.upvotes)
+
+
+class Comments(models.Model):
+	pass
