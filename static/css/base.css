@@ -1,0 +1,17 @@
+.insider{
+	padding-top: 10px;
+	padding-right: 10px;
+}
+.bd{
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	height: 50px;
+	margin-top: 3px;
+	text-align: center;
+	padding:10px;
+	text-decoration: bold;
+}
+body{
+	font-family: 'PT Sans', sans-serif;
+}

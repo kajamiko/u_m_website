@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+            <link rel="stylesheet" type="text/css" href="{% static "css/base.css"%}">
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <script type="text/javascript" src="{% static "js/color-scheme.js"%}"></script>
+ </head>
+ <body>
+
+    <header>
+     <nav class="left-side">
+    	<div class="nav-wrapper">
+     		<a href="/" class="brand-logo">Usos modern</a>
+  		</div>
+  	</nav> 
+   <div class="row">
+	   
+  <div class="col s3">
+    <!--początek sidebara chowającego się-->
+
+		<ul>
+	   		<li class="deep-purple lighten-4"><div class="bd">Story</div></li>
+	   		<li class="deep-purple lighten-4"><div class="bd">Blog</div></li>
+	   		<li class="deep-purple lighten-4"><div class="bd">Our Promise</div></li>
+	   		<li class="deep-purple lighten-3"><div class="bd">Issue Tracker</div></li>
+	   		<li class="deep-purple lighten-3"><div class="bd">Plans</div></li>
+	   </ul>
+  <!--koniec sidebara-->
+  </div>
+<div class="col s9">
+{% block content %}
+
+{% endblock %}
+</div>
+	  </div>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+     <script type="text/javascript">
+        
+             $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+        });
+            </script>    
+       
+</body>
+</html>
