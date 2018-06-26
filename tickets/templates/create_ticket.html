@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'ticket_base.html' %}
  {% load material_form %} 
 
-{% block content%}
+{% block ticket_content%}
 <form method="POST">
         {% csrf_token %}
         {% form form=form %}

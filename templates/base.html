@@ -6,52 +6,63 @@
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-            <link rel="stylesheet" type="text/css" href="{% static "css/base.css"%}">
-            {% include 'material/includes/material_css.html' %}
+            <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="{% static "js/menu.js"%}"></script> 
+                        {% include 'material/includes/material_css.html' %}
     <script src="{% static 'material/js/jquery.js' %}"></script>
     {% include 'material/includes/material_js.html' %}
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
- <script type="text/javascript" src="{% static "js/color-scheme.js"%}"></script>
  </head>
  <body>
 
-    <header>
-     <nav class="left-side">
+    
+     <nav>
     	<div class="nav-wrapper">
+          <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
      		<a href="/" class="brand-logo">Usos modern</a>
+        <ul class="right">
+          <li><a href="/accounts/login/"><span class="hide-on-med-and-down">Login</span><i class="material-icons">person</i></a></li>
+          <li><a><span class="hide-on-med-and-down">Register</span><i class="material-icons">person_add</i></a></li>
+        </ul>
   		</div>
   	</nav> 
-   <div class="row">
+
+
 	   
-  <div class="col s3">
+
     <!--początek sidebara chowającego się-->
 
-		<ul>
-	   		<li class="deep-purple lighten-4"><div class="bd">Story</div></li>
-	   		<li class="deep-purple lighten-4"><div class="bd">Blog</div></li>
-	   		<li class="deep-purple lighten-4"><div class="bd">Our Promise</div></li>
-	   		<li class="deep-purple lighten-3"><div class="bd">Issue Tracker</div></li>
-	   		<li class="deep-purple lighten-3"><div class="bd">Plans</div></li>
+		<ul id="mobile-demo" class="sidenav">
+	   		<li ><div class="deep-purple lighten-4 bd">Story</div></li>
+	   		<li><div class="deep-purple lighten-4 bd">Blog</div></li>
+	   		<li ><div class="deep-purple lighten-4 bd">Our Promise</div></li>
+	   		<li><div class="deep-purple lighten-3 bd">Issue Tracker</div></li>
+	   		<li><div class="deep-purple lighten-3 bd">Plans</div></li>
 	   </ul>
   <!--koniec sidebara-->
-  </div>
-<div class="col s9">
-  <a href="/tickets/add_ticket/" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add a ticket</a>
+
+   <div class="row">
+<div class="col l3 hide-on-med-and-down">
+<ul>
+        <li ><div class="deep-purple lighten-4 bd">Story</div></li>
+        <li><div class="deep-purple lighten-4 bd">Blog</div></li>
+        <li ><div class="deep-purple lighten-4 bd">Our Promise</div></li>
+        <li><div class="deep-purple lighten-3 bd">Issue Tracker</div></li>
+        <li><div class="deep-purple lighten-3 bd">Plans</div></li>
+     </ul>
+
+</div>
+
+
 {% block content %}
 
 {% endblock %}
 </div>
-	  </div>   
+</div>  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-     <script type="text/javascript">
-        
-             $(document).ready(function() {
-            $('.collapsible').collapsible();
-            $('select').material_select();
-            $(".button-collapse").sideNav();
-        });
-            </script>    
-       
+       <script src="{% static "js/menu.js"%}"></script> 
 </body>
 </html>

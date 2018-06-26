@@ -18,7 +18,8 @@ from django.urls import path, include
 from tickets.views import get_tickets
 
 urlpatterns = [
-	path('', get_tickets),
+	path('', get_tickets, name='index'),
     path('admin/', admin.site.urls),
     path('tickets/', include('tickets.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

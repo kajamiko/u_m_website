@@ -21,5 +21,9 @@ class Ticket(models.Model):
 		return "Ticket #{0}, type: {1}, {2}, {3} upvotes".format(str(self.id), self.variety, self.status, self.upvotes)
 
 
-class Comments(models.Model):
-	pass
+class Comment(models.Model):
+	ticket = models.ForeignKey(Ticket, null=False, on_delete = models.CASCADE)
+	author = models.CharField(max_length=20, blank=False)
+	title = models.CharField(max_length=40, blank=True)
+	content = models.TextField(blank = False)
+	date_published = models.DateField(auto_now_add=True)

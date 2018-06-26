@@ -1,0 +1,14 @@
+{% extends 'ticket_base.html' %}
+{% block ticket_content %}
+<h1>User login</h1>
+ {% load material_form %} 
+
+<form method="POST">
+	
+{{ login_form }}
+{% csrf_token %}
+<button type="submit">Login<i class="material-icons">send</i></button>
+</form>
+
+
+{% endblock %}

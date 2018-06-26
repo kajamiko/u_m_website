@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col s12 l9 tb">
+  <a href="/tickets/add_ticket/" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add a ticket</a>
+
+<div class="insider">
+
+    <div class="nav-content">
+      <ul class="tabs">
+        <li class="tab deep-purple lighten-4"><a href="#test1">Ticket creator</a></li>
+        <li class="tab deep-purple lighten-4"><a class="active" href="#test2">Bugs</a></li>
+        <li class="tab  deep-purple lighten-4"><a href="#test3">Features</a></li>
+        <li class="tab deep-purple lighten-4"><a href="#test4">News</a></li>
+      </ul>
+    </div>
+
+    {% if messages %}
+  <div>
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+  </div>
+{% endif %}
+{% block ticket_content %}
+
+{% endblock %}
+
+
+{% endblock %}
