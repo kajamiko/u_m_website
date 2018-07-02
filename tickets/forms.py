@@ -9,5 +9,6 @@ class TicketForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-	model = Comment
-	fields = ('author', 'content')
+	class Meta:
+		model = Comment
+		fields = ('author', 'title', 'content')

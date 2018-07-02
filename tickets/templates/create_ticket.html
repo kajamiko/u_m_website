@@ -4,8 +4,7 @@
 {% block ticket_content%}
 <form method="POST">
         {% csrf_token %}
-        {% form form=form %}
-        {% endform %}
+        {{ form }}
         <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Cancel</a>
         <button type="submit" name="_submit" class="btn">Submit</button>
   </form>

@@ -21,7 +21,7 @@ class UserRegistrationForm(UserCreationForm):
 		widget = forms.PasswordInput)	
 	class Meta:
 		model = User
-		fields = ['email', 'username', 'password1', 'password1']
+		fields = ['email', 'username', 'password1', 'password2']
 	def clean_email(self):
 		email = self.cleaned_data.get('email')
 		username = self.cleaned_data.get('username')

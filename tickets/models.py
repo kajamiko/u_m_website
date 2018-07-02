@@ -24,6 +24,12 @@ class Ticket(models.Model):
 class Comment(models.Model):
 	ticket = models.ForeignKey(Ticket, null=False, on_delete = models.CASCADE)
 	author = models.CharField(max_length=20, blank=False)
-	title = models.CharField(max_length=40, blank=True)
+	title = models.CharField(max_length=40, blank = False)
 	content = models.TextField(blank = False)
 	date_published = models.DateField(auto_now_add=True)
+	
+	
+	class Meta:
+		ordering = ["-date_published"]
+	def __str__(self):
+		return "{0} - {1} - {2}".format(self.title, self.date_published, self.author)

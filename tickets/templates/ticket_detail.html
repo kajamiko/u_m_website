@@ -3,48 +3,73 @@
 
 
 <table>
-<tr>
-  <th>Ticket</th>
-  <th>Issue</th>
-  <th>Verified</th>
-  <th>Status</th>
-</tr>
-<tr>
-
-<tr>
- <td>#{{ ticket.id }}</td>
- <td>  {{ ticket.issue }} </td>
- {% if ticket.verified %}
- <td>Yes </td>
- {% else%}
- <td> No </td>
- {% endif %}
- <td>{{ ticket.status }}</td>
- </tr>
-
-<tr>
-<th>Description</th>
-<th>
-Created
-</th>
-<th>
-Upvotes
-</th>
-</tr>
-
-<tr>
-  <td> {{ ticket.description }}</td>
-    <td>
-    {{ ticket.date_created }}
-    </td>
-    <td>
-    {{ ticket.upvotes }}
-
-    <a href="{% url 'upvote_simple' ticket.id %}">Up</a>
-
-    </td>
-<tr>
-
-
+     <tr>
+       <th>Ticket</th>
+       <th>Issue</th>
+       <th>Verified</th>
+       <th>Status</th>
+     </tr>
+     <tr>
+     
+     <tr>
+      <td>#{{ ticket.id }}</td>
+      <td>  {{ ticket.issue }} </td>
+      {% if ticket.verified %}
+      <td>Yes </td>
+      {% else%}
+      <td> No </td>
+      {% endif %}
+      <td>{{ ticket.status }}</td>
+      </tr>
+     
+     <tr>
+     <th>Description</th>
+     <th>
+     Created
+     </th>
+     <th>
+     Upvotes
+     </th>
+     </tr>
+     
+     <tr>
+       <td> {{ ticket.description }}</td>
+         <td>
+         {{ ticket.date_created }}
+         </td>
+         <td>
+         {{ ticket.upvotes }}
+     
+         <a href="{% url 'upvote_simple' ticket.id %}">Up</a>
+     
+         </td>
+     <tr>
 </table>
+<div class="col l6">
+   <form method="POST">
+        <legend>Comment this ticket: </legend>
+        {% csrf_token %}
+        {{ form }}
+        <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Cancel</a>
+        <button type="submit" name="_submit" class="btn">Comment</button>
+  </form>
+  <span>Comments: {{ comments_quantity }}</span>
+{% if comments %}
+      <ul class="collection">
+     {% for comment in comments %}
+    
+          <li class="collection-item avatar">
+              <i class="material-icons circle">account_box</i>  
+           <span class="title"><b>{{ comment.title }}</b></span>
+           <p> {{ comment.content }}</p>
+           <span>{{ comment.date_published }}</span>
+          <a href="#" class="secondary-content">{{ comment.author }}</i></a>
+
+           </li>
+    
+          
+     {% endfor %}
+ </ul>
+{% endif %}
+</div>
 {% endblock %}
