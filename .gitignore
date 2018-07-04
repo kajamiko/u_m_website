@@ -4,3 +4,4 @@ migrations/
 c.9/
 *.pyc
 *.pyo
+htmlcov/

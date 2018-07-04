@@ -5,6 +5,7 @@ from django.db.models import F
 from .forms import TicketForm, CommentForm
 
 
+
 def get_tickets(request):
 	results = Ticket.objects.all()
 	return render(request, 'ticket_list.html', {'tickets': results})
@@ -24,6 +25,8 @@ def ticket_details(request, ticket_id):
 			return redirect(ticket_details, result.id)
 	else:
 		form = CommentForm()
+		
+	
 	return render(request, 'ticket_detail.html', {'form': form, 'ticket': result, 'comments': comments, 'comments_quantity': comments_quantity})
 
 def upvote_simple(request, ticket_id):
@@ -41,3 +44,8 @@ def create_ticket(request):
 	else:
 		form = TicketForm()
 	return render(request, 'create_ticket.html', {'form': form})
+
+
+def comment_details(request, comment_id):
+	comment = get_object_or_404(Comment, pk = comment_id)
+	return render(request, 'comment_detail.html', {'comment': comment})

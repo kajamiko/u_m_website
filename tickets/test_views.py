@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Ticket
+from .models import Comment
 from django.shortcuts import get_object_or_404
 
 class test_views(TestCase):
@@ -45,7 +46,27 @@ class test_views(TestCase):
 		self.assertTemplateUsed(page, 'create_ticket.html')
 
 	def test_adding_ticket(self):
-		{"issue": "test", "description": "test"}
 		page = self.client.post("/tickets/add_ticket/", {"variety": "B", "issue": "test", "description": "test"})
 		ticket = get_object_or_404(Ticket, pk=1)
-		self.assertEqual(ticket.issue, "test")
+		self.assertEqual(ticket.variety, "B")
+		
+	def test_adding_comment(self):
+		ticket = Ticket(variety='B', issue='serious issue')
+		ticket.save()
+		self.client.get('/tickets/{0}/'.format(ticket.id))
+		page = self.client.post('/tickets/{0}/'.format(ticket.id), {'author': 'test', 'content': 'test_content', 'title': 'test_title'})
+		comment = get_object_or_404(Comment, pk=1)
+		self.assertEqual(page.status_code, 302)
+		self.assertEqual(comment.content, 'test_content')
+		page = self.client.post('/tickets/{0}/'.format(ticket.id), {'author': 'test', 'content': 'test_content'})
+		self.assertEqual(page.status_code, 200)
+	
+	def test_comment_displaying(self):
+		ticket = Ticket(variety='B', issue='serious issue')
+		ticket.save()
+		self.client.get('/tickets/{0}/'.format(ticket.id))
+		self.client.post('/tickets/{0}/'.format(ticket.id), {'author': 'test', 'content': 'test_content', 'title': 'test_title'})
+		page = self.client.get('/tickets/comment/1')
+		self.assertEqual(page.status_code, 200)
+		
+		
