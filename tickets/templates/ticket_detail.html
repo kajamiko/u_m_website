@@ -5,6 +5,7 @@
 <table>
      <tr>
        <th>Ticket</th>
+       <th>Variety</th>
        <th>Issue</th>
        <th>Verified</th>
        <th>Status</th>
@@ -13,6 +14,7 @@
      
      <tr>
       <td>#{{ ticket.id }}</td>
+      <td>{{ ticket.variety }}</td>
       <td>  {{ ticket.issue }} </td>
       {% if ticket.verified %}
       <td>Yes </td>
@@ -39,9 +41,11 @@
          </td>
          <td>
          {{ ticket.upvotes }}
-     
+          {% if ticket.variety == 'B' %}
          <a href="{% url 'upvote_simple' ticket.id %}">Up</a>
-     
+          {% else %}
+          <a href="{% url 'shopping_cart:add_to_cart' ticket.id %}">Up(add to cart)</a>
+          {% endif %}
          </td>
      <tr>
 </table>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h3> Your shopping cart
+<span class="badge pull-right">
+                {% with totail_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        My Shopping Order:
+                        <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
+                            {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
+                        </a>
+                        {% else %}
+                        Your cart is empty.
+                    {% endif %}
+                {% endwith %}
+            </span>
+        </h3>
+<div class="col l8">
+<table class="cart">
+     <thead>
+          <tr>
+               <th>Feature</th>
+               <th>Donation</th>
+               <th>Remove</th>
+          </tr>
+     </thead>
+     <tbody>
+          {% for item in cart %}
+          {% with ticket=item.ticket %}
+          
+          <tr>
+               <td>{{ ticket.issue }}</td>
+               <td>
+                    
+                    <form action="{% url 'shopping_cart:add_to_cart' ticket.id %}" method="post">
+                         <div class="row">
+                            <div class="col s3">
+                         {% csrf_token %}
+                        {{ item.update_donation_form.donation }}
+                        {{ item.update_donation_form.update }}
+                        </div>
+                         <button type="submit" class="btn btn-sm"> Update </button>
+                        </div>
+                    </form>
+               </td>
+               <td><a href="{% url 'shopping_cart:cart_remove' ticket.id %}">Remove</a></td>
+          </tr>
+          {% endwith %}
+          {% endfor %}          
+     </tbody>
+</table>
+</div>
+
+{% endblock %}

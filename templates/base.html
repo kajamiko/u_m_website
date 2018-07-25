@@ -13,9 +13,12 @@
                         {% include 'material/includes/material_css.html' %}
     <script src="{% static 'material/js/jquery.js' %}"></script>
     {% include 'material/includes/material_js.html' %}
+    
+    {% block title %}
+    {% endblock %}
  </head>
  <body>
-
+<main>
     
      <nav>
     	<div class="nav-wrapper">
@@ -28,6 +31,8 @@
           <li><a href="/accounts/login/"><span class="hide-on-med-and-down">Login</span><i class="material-icons">person</i></a></li>
           <li><a href="/accounts/register/"><span class="hide-on-med-and-down">Register</span><i class="material-icons">person_add</i></a></li>
           {% endif %}
+          <!--fixed issue-->
+          <li><a href="{% url 'shopping_cart:cart_detail' %}"><span class="hide-on-med-and-down"></span><i class="material-icons">shopping_cart</i></a></li>
         </ul>
   		</div>
   	</nav> 
@@ -41,7 +46,7 @@
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Story</a></div></li>
 	   		<li><div class="deep-purple lighten-4 bd"><a href="#">Blog</a></div></li>
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Our Promise</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Issue Tracker</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'all_tickets' %}">Issue Tracker</a></div></li>
 	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Pricing</a></div></li>
 	   </ul>
   <!--koniec sidebara-->
@@ -52,7 +57,7 @@
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Story</a></div></li>
 	   		<li><div class="deep-purple lighten-4 bd"><a href="#">Blog</a></div></li>
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Our Promise</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Issue Tracker</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'all_tickets' %}">Issue Tracker</a></div></li>
 	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Pricing</a></div></li>
 	   </ul>
 
@@ -63,7 +68,29 @@
 
 {% endblock %}
 </div>
-
+</main>
+ <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">USOS modern website</h5>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 KajaMiko
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 

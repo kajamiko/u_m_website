@@ -17,6 +17,7 @@ class test_tickets(TestCase):
 		self.assertEqual(ticket.status, 'to do')
 		self.assertEqual(ticket.date_created, date.today())
 		self.assertFalse(ticket.date_verified)
+		self.assertEqual(ticket.__str__(), "Ticket #{0}, type: {1}, {2}, {3} upvotes".format(str(ticket.id), ticket.variety, ticket.status, ticket.upvotes ))
 		
 	def test_comment(self):
 		ticket = Ticket(variety='B', issue='serious issue')

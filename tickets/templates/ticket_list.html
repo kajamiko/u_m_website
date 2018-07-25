@@ -11,7 +11,7 @@
 </tr>
 <tr>
 {% for ticket in tickets %}
- <td><a href="tickets/{{ ticket.id }}/">#{{ ticket.id }}</a></td>
+ <td><a href="{% url 'ticket_details' ticket.id %}">#{{ ticket.id }}</a></td>
  <td>  {{ ticket.issue }} </td>
  {% if ticket.verified %}
  <td>Yes </td>
