@@ -12,6 +12,7 @@
             <script src="{% static "js/menu.js"%}"></script> 
                         {% include 'material/includes/material_css.html' %}
     <script src="{% static 'material/js/jquery.js' %}"></script>
+   
     {% include 'material/includes/material_js.html' %}
     
     {% block title %}
@@ -26,10 +27,10 @@
      		<a href="/" class="brand-logo">Usos modern</a>
         <ul class="right">
           {% if user.is_authenticated %}
-          <li><a href="{% url 'logout' %}"><span class="hide-on-med-and-down">Logout</span><i class="material-icons">power_settings_new</i></a></li>
+          <li><a href="{% url 'accounts:logout' %}"><span class="hide-on-med-and-down">Logout</span><i class="material-icons">power_settings_new</i></a></li>
           {% else %}
-          <li><a href="/accounts/login/"><span class="hide-on-med-and-down">Login</span><i class="material-icons">person</i></a></li>
-          <li><a href="/accounts/register/"><span class="hide-on-med-and-down">Register</span><i class="material-icons">person_add</i></a></li>
+          <li><a href="{% url 'accounts:login' %}"><span class="hide-on-med-and-down">Login</span><i class="material-icons">person</i></a></li>
+          <li><a href="{% url 'accounts:register' %}"><span class="hide-on-med-and-down">Register</span><i class="material-icons">person_add</i></a></li>
           {% endif %}
           <!--fixed issue-->
           <li><a href="{% url 'shopping_cart:cart_detail' %}"><span class="hide-on-med-and-down"></span><i class="material-icons">shopping_cart</i></a></li>
@@ -46,7 +47,7 @@
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Story</a></div></li>
 	   		<li><div class="deep-purple lighten-4 bd"><a href="#">Blog</a></div></li>
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Our Promise</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'all_tickets' %}">Issue Tracker</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a></div></li>
 	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Pricing</a></div></li>
 	   </ul>
   <!--koniec sidebara-->
@@ -57,7 +58,7 @@
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Story</a></div></li>
 	   		<li><div class="deep-purple lighten-4 bd"><a href="#">Blog</a></div></li>
 	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Our Promise</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'all_tickets' %}">Issue Tracker</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a></div></li>
 	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Pricing</a></div></li>
 	   </ul>
 

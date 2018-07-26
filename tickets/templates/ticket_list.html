@@ -11,18 +11,45 @@
 </tr>
 <tr>
 {% for ticket in tickets %}
- <td><a href="{% url 'ticket_details' ticket.id %}">#{{ ticket.id }}</a></td>
+ <td><a href="{% url 'tickets:ticket_details' ticket.id %}">#{{ ticket.id }}</a></td>
  <td>  {{ ticket.issue }} </td>
  {% if ticket.verified %}
  <td>Yes </td>
- {% else%}
+  {% else%}
  <td> No </td>
- {% endif %}
+  {% endif %}
  <td>{{ ticket.status }}</td>
  </tr> 
 {% endfor %}
+
 </table>
-{% else %}
+
+<ul class="pagination">
+
+        {% if tickets.has_previous %}
+            <li class="waves-effect"><a href="?page=1">&laquo;</a></li>
+            <li class="waves-effect"><a href="?page={{ tickets.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+        {% endif %}
+        
+        {% for  num in tickets.paginator.page_range %}
+        
+            
+            {% if num == tickets.number %}
+            <li class="waves-effect teal lighten-2 btn">{{ num }}</li>
+            {% elif num > tickets.number|add:'-3' and num < tickets.number|add:'3' %}
+            <li class="waves-effect teal lighten-4 btn">{{ num }}</li>
+            {% endif %}
+        {% endfor %}
+
+        {% if tickets.has_next %}
+            <li class="waves-effect "><a href="?page={{ tickets.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+             <li class="waves-effect"><a href="?page={{ tickets.paginator.num_pages }}">&raquo;</a><li></li>
+        {% endif %}
+    
+</ul>
+        
+
+{% else %} 
 <p>No tickets</p>
 {% endif %}
 {% endblock %}

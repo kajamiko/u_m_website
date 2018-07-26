@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h4>Checkout</h4>
+<div class="col l8">
+     <form action="." method="post">
+          {% csrf_token %}
+          {{ form.as_p }}<br>
+          <input type="submit" class="btn btn-primary" value="Submit order">
+     </form>
+     <ul class="collection with-header">
+          <li class="collection-header"><h4>Your order</h4></li>
+          {% for item in cart %}
+          <li class="collection-item"><div>{{ item.ticket.issue }}<span class="secondary-content">{{ item.donation }}</span></div>
+          {% endfor %}
+          <li class="collection-header"><h6>{{ cart.get_total() }}</h6></li>
+     </ul>
+</div>
+{% endblock %}

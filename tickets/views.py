@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import Ticket
 from .models import Comment
 from django.db.models import F
@@ -8,7 +9,14 @@ from .forms import TicketForm, CommentForm
 
 def get_tickets(request):
 	results = Ticket.objects.all()
-	return render(request, 'ticket_list.html', {'tickets': results})
+	paginator = Paginator(results, 2)
+	try:
+		page = request.GET.get('page')
+	except PageNotAnInteger:
+		page = paginator.page(1)
+		
+	tickets = paginator.get_page(page)
+	return render(request, 'ticket_list.html', {'tickets': tickets})
 
 def ticket_details(request, ticket_id):
 	result = get_object_or_404(Ticket, pk=ticket_id)
