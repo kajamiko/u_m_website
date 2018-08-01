@@ -7,8 +7,17 @@ from .forms import TicketForm, CommentForm
 
 
 
-def get_tickets(request):
-	results = Ticket.objects.all()
+def get_tickets(request, variety=''):
+	
+	if variety=="features":
+		results = Ticket.objects.filter(variety__exact="F")
+		
+	elif variety=="bugs":
+		results = Ticket.objects.filter(variety__exact="B")
+		
+	else:
+		results = Ticket.objects.all()
+		
 	paginator = Paginator(results, 2)
 	try:
 		page = request.GET.get('page')
@@ -17,6 +26,9 @@ def get_tickets(request):
 		
 	tickets = paginator.get_page(page)
 	return render(request, 'ticket_list.html', {'tickets': tickets})
+	
+
+	
 
 def ticket_details(request, ticket_id):
 	result = get_object_or_404(Ticket, pk=ticket_id)

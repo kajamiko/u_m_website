@@ -5,6 +5,7 @@
 <table>
 <tr>
 	<th>Ticket</th>
+	<th>Type</th>
 	<th>Issue</th>
 	<th>Verified</th>
 	<th>Status</th>
@@ -12,6 +13,11 @@
 <tr>
 {% for ticket in tickets %}
  <td><a href="{% url 'tickets:ticket_details' ticket.id %}">#{{ ticket.id }}</a></td>
+ {% if ticket.variety == "F" %}
+ <td>Feature </td>
+  {% else %}
+ <td> Bug </td>
+  {% endif %}
  <td>  {{ ticket.issue }} </td>
  {% if ticket.verified %}
  <td>Yes </td>

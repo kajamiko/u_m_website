@@ -11,13 +11,25 @@ class TestCart(TestCase):
         self.request.session = {}
         
         
-        
      def test_init_empty(self):
         cart = Cart(self.request)
         self.assertEqual(self.request.session.get(settings.CART_SESSION_ID), {})
         
      def test_adding_ticket(self):
           ticket = Ticket(variety='F', issue='some extra feature')
+          ticket.save()
+          ticket2 = Ticket.objects.create(
+               variety = "F",
+               upvotes = 0,
+               author = "SOmeone",
+               status = "to do",
+               issue = "blabla",
+          
+          )
           cart = Cart(self.request)
           cart.add(ticket)
-          print(iter(cart))
+          cart.add(ticket2)
+          cart_items = []
+          for item in cart:
+               cart_items.append(item)
+          print(len(cart_items))
