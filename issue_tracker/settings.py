@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'shopping_cart',
     'checkout',
     'home',
+    'django_summernote',
+    'weblog',
 
 ]
 
@@ -138,3 +140,19 @@ MEDIA_URL = '/media/'
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 CART_SESSION_ID = 'cart'
+
+WEBLOG_SETTINGS = {
+'enable_comments': True,
+'allow_anon_comments': False,
+'multilingual': False,
+'blog_title': 'Usos Modern News',
+'base_template': 'weblog_base.html',
+'show_author': True,
+'use_authors_username': True,
+'show_sidebar': True,
+'show_categories': False,
+'show_archive': True,
+'posts_per_page': 10,
+'enable_rss': True,
+'home_title': 'Usos Modern blog!',
+}
