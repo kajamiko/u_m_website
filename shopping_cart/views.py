@@ -29,5 +29,5 @@ def cart_detail(request):
      cart = Cart(request)
      for item in cart:
           item['update_donation_form'] = CartAddTicketForm(initial={'donation': item['donation'], 'update': True})
-          print(item)
+     # print(len(cart))
      return render(request, 'detail.html', {'cart': cart})

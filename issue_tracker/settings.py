@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'home',
     'django_summernote',
     'weblog',
+    'chartit',
 
 ]
 
@@ -114,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -133,6 +135,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     )
 
+STRIPE_PUBLISHABLE=os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET=os.getenv('STRIPE_SECRET')
 
 MEDIA_ROOT = os.path.join(BASE_DIR)
 MEDIA_URL = '/media/'

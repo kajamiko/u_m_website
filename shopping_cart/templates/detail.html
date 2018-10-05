@@ -4,10 +4,9 @@
 
 {% block content %}
 
-<h3> Your shopping cart
-<span class="">
-                {% with total_items=cart|length %}
-                    {% if cart|length > 0 %}
+<h3> Your shopping cart {{ cart|length }}
+{% with totail_items=cart|length %}
+                    {% if cart|length %}
                         My Shopping Order:
                         <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
                             {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
@@ -16,7 +15,6 @@
                         Your cart is empty.
                     {% endif %}
                 {% endwith %}
-            </span>
         </h3>
 <div class="col l8">
 <table class="cart">
@@ -28,9 +26,10 @@
           </tr>
      </thead>
      <tbody>
+          {{ cart }}
           {% for item in cart %}
-          {% with ticket=item.ticket %}
           
+          {% with ticket=item.ticket %}
           <tr>
                <td>{{ ticket.issue }}</td>
                <td>
@@ -42,7 +41,7 @@
                         {{ item.update_donation_form.donation }}
                         {{ item.update_donation_form.update }}
                         </div>
-                         <button type="submit" class="btn btn-sm"> Update </button>
+                         <button type="submit" class="btn btn-sm"> Set donation </button>
                         </div>
                     </form>
                </td>
@@ -53,10 +52,10 @@
      </tbody>
 </table>
 <p>
-     <a class="btn btn-lg" href="{ url 'tickets:all_tickets' }"> Continue browsing </a>
+     <a class="btn btn-lg" href="{% url 'tickets:all_tickets' %}"> Continue browsing </a>
      {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
-     <a class="btn btn-lg" href="{ url 'checkout:order_create' }"> Checkout </a>
+     <a class="btn btn-lg" href="{% url 'checkout:order_create' %}"> Checkout </a>
      {% endif %}
       {% endwith %}
 </p>

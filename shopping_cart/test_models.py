@@ -30,6 +30,6 @@ class TestCart(TestCase):
           cart.add(ticket)
           cart.add(ticket2)
           cart_items = []
-          for item in cart:
-               cart_items.append(item)
-          print(len(cart_items))
+          print(len(cart))
+          cart.remove(ticket2)
+          print(len(cart))

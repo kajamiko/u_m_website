@@ -6,7 +6,7 @@
     
           <li class="collection-item avatar">
               <i class="material-icons circle">account_box</i>  
-           <span class="title"><b><a href="{% url 'comment_details' comment.id %}">{{ comment.title }}</a></b></span>
+           <span class="title"><b><a href="{% url 'tickets:comment_details' comment.id %}">{{ comment.title }}</a></b></span>
            <p> {{ comment.content }}</p>
            <span>{{ comment.date_published }}</span>
           <a href="#" class="secondary-content">{{ comment.author }}</i></a>
