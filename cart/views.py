@@ -16,14 +16,14 @@ def add_to_cart(request, ticket_id):
                          update=cd['update'])
      else:
           cart.add(ticket=ticket)
-     return redirect('shopping_cart:cart_detail')
+     return redirect('cart:cart_detail')
 
                     
 def cart_remove(request, ticket_id):
      cart = Cart(request)
      ticket = get_object_or_404(Ticket, id=ticket_id)
      cart.remove(ticket)
-     return redirect('shopping_cart:cart_detail')
+     return redirect('cart:cart_detail')
      
 def cart_detail(request):
      cart = Cart(request)

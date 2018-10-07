@@ -4,18 +4,19 @@
 
 {% block content %}
 
-<h3> Your shopping cart {{ cart|length }}
-{% with totail_items=cart|length %}
+<h3> Your shopping cart  </h3>
+<h4>  You have   {{ cart|length }} items in your cart. </h4>
+{% with total_items=cart|length %}
                     {% if cart|length %}
-                        My Shopping Order:
+                        My Order Total is:
                         <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
-                            {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
+                             {{ cart.get_total }}
                         </a>
                         {% else %}
                         Your cart is empty.
                     {% endif %}
                 {% endwith %}
-        </h3>
+       
 <div class="col l8">
 <table class="cart">
      <thead>
@@ -34,7 +35,7 @@
                <td>{{ ticket.issue }}</td>
                <td>
                     
-                    <form action="{% url 'shopping_cart:add_to_cart' ticket.id %}" method="post">
+                    <form action="{% url 'cart:add_to_cart' ticket.id %}" method="post">
                          <div class="row">
                             <div class="col s3">
                          {% csrf_token %}
@@ -45,7 +46,7 @@
                         </div>
                     </form>
                </td>
-               <td><a href="{% url 'shopping_cart:cart_remove' ticket.id %}">Remove</a></td>
+               <td><a href="{% url 'cart:cart_remove' ticket.id %}">Remove</a></td>
           </tr>
           {% endwith %}
           {% endfor %}          

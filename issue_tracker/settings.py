@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'material.frontend',
     'tickets',
     'accounts',
-    'shopping_cart',
+    'cart',
     'checkout',
     'home',
     'django_summernote',
@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'shopping_cart.context_processors.cart'
+                'cart.context_processors.cart'
             ],
         },
     },
@@ -150,7 +150,7 @@ WEBLOG_SETTINGS = {
 'allow_anon_comments': False,
 'multilingual': False,
 'blog_title': 'Usos Modern News',
-'base_template': 'weblog_base.html',
+'base_template': os.path.join(BASE_DIR, 'templates/blog_base.html'),
 'show_author': True,
 'use_authors_username': True,
 'show_sidebar': True,

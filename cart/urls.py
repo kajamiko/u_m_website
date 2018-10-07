@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
 
-app_name='shopping_cart'
+app_name='cart'
 
 urlpatterns=[
      path('add_to_cart/<int:ticket_id>/', views.add_to_cart, name="add_to_cart"),
