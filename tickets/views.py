@@ -18,7 +18,7 @@ def get_tickets(request, variety=''):
 	else:
 		results = Ticket.objects.all()
 		
-	paginator = Paginator(results, 2)
+	paginator = Paginator(results, 5)
 	try:
 		page = request.GET.get('page')
 	except PageNotAnInteger:
@@ -42,7 +42,7 @@ def ticket_details(request, ticket_id):
 			added_comment = form.save(commit=False)
 			added_comment.ticket = result
 			added_comment.save()
-			return redirect(ticket_details, result.id)
+			return redirect("tickets:comment_details", comment_id=added_comment.id)
 	else:
 		form = CommentForm()
 		
@@ -53,14 +53,14 @@ def upvote_simple(request, ticket_id):
 	ticket = get_object_or_404(Ticket, pk=ticket_id)	
 	ticket.upvotes = F('upvotes') + 1
 	ticket.save()
-	return redirect('ticket_details', ticket.id)
+	return redirect('tickets:ticket_details', ticket_id=ticket.id)
 
 def create_ticket(request):
 	if request.method == 'POST':
 		form = TicketForm(request.POST, request.FILES)
 		if form.is_valid():
 			ticket = form.save()
-			return redirect(ticket_details, ticket.id)
+			return redirect("tickets:ticket_details", ticket.id)
 	else:
 		form = TicketForm()
 	return render(request, 'create_ticket.html', {'form': form})

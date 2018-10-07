@@ -41,13 +41,14 @@
          <td>
          {{ ticket.upvotes }}
           {% if ticket.variety == 'B' %}
-         <a href="{% url 'upvote_simple' ticket.id %}">Up</a>
+         <a href="{% url 'tickets:upvote_simple' ticket.id %}">Up</a>
           {% else %}
-          <a href="{% url 'shopping_cart:add_to_cart' ticket.id %}">Up(add to cart)</a>
+          <a href="{% url 'cart:add_to_cart' ticket.id %}">Up(add to cart)</a>
           {% endif %}
          </td>
      <tr>
 </table>
+ <div><span>Comments: {{ comments_quantity }}</span></div>
 <div class="col l6">
    <form method="POST">
         <legend>Comment this ticket: </legend>
@@ -56,7 +57,7 @@
         <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Cancel</a>
         <button type="submit" name="_submit" class="btn">Comment</button>
   </form>
-  <span>Comments: {{ comments_quantity }}</span>
+
 {% if comments %}
       <ul class="collection">
      {% for comment in comments %}
@@ -69,8 +70,6 @@
           <a href="#" class="secondary-content">{{ comment.author }}</i></a>
 
            </li>
-    
-          
      {% endfor %}
  </ul>
 {% endif %}
