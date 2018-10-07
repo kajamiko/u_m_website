@@ -5,3 +5,10 @@
 .archive-child-list{
     display: none;
 }
+#bootstrap-overrides nav{
+    background-color: #62007A;
+}
+#bootstrap-overrides a{
+    
+    color: black;
+}

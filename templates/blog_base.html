@@ -12,11 +12,12 @@
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
           <script src="{% static '/weblog/js/weblog.js' %}" defer></script>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <body id="bootstrap-overrides">
+        <nav class="navbar navbar-expand-sm ">
             <div class="container nav-container">
-                <a href="/" class="navbar-brand">UM website</a>
-                <a class="navbar-brand" href="{% url 'weblog:Index' %}">Usos blog</a>
+                
+                <a class="navbar-brand text-white" href="{% url 'weblog:Index' %}">Usos Modern blog</a>
+                <a href="/" class="navbar-brand"><img id="brand_blog" src="{% static '/images/um-logo.png' %}"></a>
             </div>
         </nav>
         <div class="container">
