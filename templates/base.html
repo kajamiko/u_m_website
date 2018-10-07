@@ -25,7 +25,7 @@
      <nav>
     	<div class="nav-wrapper">
           <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-     		<a href="/" class="brand-logo">Usos modern</a>
+     		<a href="/" class="brand-logo"><span class="hide-on-med-and-down">Usos Modern</span></a>
         <ul class="right">
           {% if user.is_authenticated %}
           <li><a href="{% url 'accounts:logout' %}"><span class="hide-on-med-and-down">Logout</span><i class="material-icons">power_settings_new</i></a></li>
@@ -38,29 +38,29 @@
         </ul>
   		</div>
   	</nav> 
+	  
 
-
-	   
-
-    <!--początek sidebara chowającego się-->
-
-		<ul id="mobile-demo" class="sidenav white-text">
-	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Story</a></div></li>
-	   		<li><div class="deep-purple lighten-4 bd"><a href="/blog/">Blog</a></div></li>
-	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Our Promise</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Statistics</a></div></li>
+    <!--hiding sidebar-->
+<div id="mobile-demo" class="transparent  sidenav white-text center-align">
+		<ul>
+		    <li ><div class="deep-purple lighten-2 bd circular-div valign-wrapper"><a href="#"><img id="brand" src="{% static '/images/um-logo.png' %}"></a></div></li>
+	   		<li ><div class="deep-purple lighten-4 bd rectangle-div"><a href="#">Story</a></div></li>
+	   		<li><div class="deep-purple lighten-4 bd rectangle-div"><a href="/blog/">Blog</a></div></li>
+	   		<li ><div class="deep-purple lighten-4 bd rectangle-div"><a href="#">Our Promise</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd rectangle-div"><a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd rectangle-div"><a href="#">Statistics</a></div></li>
 	   </ul>
-  <!--koniec sidebara-->
+</div>
+  <!--The end of the sidebar-->
 
    <div class="row">
 <div class="col l3 hide-on-med-and-down white-text">
 <ul>
-	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Story</a></div></li>
-	   		<li><div class="deep-purple lighten-4 bd"><a href="/blog/">Blog</a></div></li>
-	   		<li ><div class="deep-purple lighten-4 bd"><a href="#">Our Promise</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a></div></li>
-	   		<li><div class="deep-purple lighten-3 bd"><a href="#">Statistics</a></div></li>
+	   		<li ><div class="deep-purple lighten-4 bd rectangle-div"><a href="#">Story</a></div></li>
+	   		<li><div class="deep-purple lighten-4 bd rectangle-div"><a href="/blog/">Blog</a></div></li>
+	   		<li ><div class="deep-purple lighten-4 bd rectangle-div"><a href="#">Our Promise</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd rectangle-div"><a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a></div></li>
+	   		<li><div class="deep-purple lighten-3 bd rectangle-div"><a href="#">Statistics</a></div></li>
 	   </ul>
 
 </div>
