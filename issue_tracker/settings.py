@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'home',
     'django_summernote',
     'weblog',
-    'chartit',
+    'chartjs',
 
 ]
 
