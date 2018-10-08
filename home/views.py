@@ -4,16 +4,19 @@ from chartit import PivotDataPool, PivotChart
 
 def homepage(request):
      
-     
      return render(request, 'index.html' )
+
 
 def project_info(request):
     
     return render(request, 'project_info.html')
+
+
+def promise(request):
+    
+    return render(request, 'promise.html')    
      
 def show_stats(request):
-     
-     
 # Step 1: Create a PivotDataPool with the data we want to retrieve.
      ticketpivotdata = PivotDataPool(
         series=[{

@@ -2,9 +2,12 @@
 {% load static %}
 {% block title_block %}The Usos Modern Project {% endblock %}
 {% block content %}
+
 <link rel="stylesheet" href="{% static '/css/project.css' %}">
-<div id="info" class="col s12 l9">
-     <h2>Welcome to Usos Modern&trade; project page</h2>
+     <h3>Welcome to Usos Modern&trade; project page</h3>
+<a href="https://play.google.com/store"><img class="os-links" src="{% static '/images/homepage/ios-image.png' %}"></a> <a href="https://www.apple.com/uk/ios/app-store/"><img class="os-links" src="{% static '/images/homepage/android-image.png' %}"></a>
+
+<div id="info" class="col s12 m8 l8">
      <h5>Here you can find all the useful links and information.</h5>
 <p> Usos modern is a mobile app, created for those lucky enough to study in Poland. It's major function is ability to synchronise with infamous USOS system("Uniwersytecki System Obsugi Studenta") and make using it less stressful, and thus, your studuying experience, more joyful!</p>
 <p> However, it also has many more useful functions, so not only registered students can use it. Try USOS Modern as your scheduling app!</p>
@@ -20,4 +23,7 @@
     <li class="collection-item">Checking request's status</li>
 </ul>
   </div>
+  </div>
+  <div class="section center-align">
+  <a class="waves-effect waves-light btn"><i class="material-icons left">settings</i>For developers</a>
 {% endblock %}

@@ -5,7 +5,8 @@ footer{
      background-color: #ff6f00  !important;
 }
 
-#info{
-     overflow-y: scroll;
-     height: 500px;
+
+.os-links{
+     
+     width: 120px;
 }

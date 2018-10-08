@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title_block %}The Usos Modern Project {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/promise.css' %}">
+
+<h3>We Promise...</h3>
+<div id="info" class="col s12 m8 l8">
+<ul class="collection with-header">
+     <li class="collection-header"><h5>To make Usos Modern&trade; better!<h5></li>
+    <li class="collection-item">
+         <h6>How?</h6>
+         <p>We have our amazing issue Tracker, where you can browse, submit and upvote issues you have encountered while using the app!</p>
+    </li>
+      <li class="collection-item">
+         <h6>How can I report an issue?</h6>
+         <p>Before submiting a new issue, please use search tool to make sure it hasn't been reported previously. It is very important, because...</p>
+    </li>
+     <li class="collection-item">
+         <h6>Upvoting helps us keep track on app's issues and let us know, how many users encountered the problem.</h6>
+         <p>The more upvotes an issue gets, the more serious it is! And we know, on what to work first. We also strongly insist to leave your device's specifications in comments.</p>
+    </li>
+    
+    <li class="collection-header"><h5>To make Usos Modern&trade; even more than better!<h5></li>
+         <li class="collection-item">
+              <h6>How?</h6>
+              <p>Again, use Issue Tracker to browse, submit, and upvote new, exciting features you would like to see in USOS Modern&trade; in the future! To do so, please upvote the features you like.</p>
+          </li>
+          <li class="collection-item">
+              <h6>How can I support a feature?</h6>
+              <p>To do it, just click "Upvote(add to cart)" button next to the feature's title in Issue Tracker. Then follow the steps displayed as in any other online store!</p>
+         </li>
+         <li class="collection-item">
+              <h6>Do I need to have an active account on the website to upvote features?</h6>
+              <p> No, you can do it even without an active acccount, but please bear in mind that your cart's content won't last longer than your browser is open. Moreover, on your account you can keep track on your previous orders, so you will not pay for the same featre again...unless you wish to. :)</p>
+         </li>
+</ul>
+  </div>
+{% endblock %}
