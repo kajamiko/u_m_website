@@ -6,7 +6,10 @@ def homepage(request):
      
      
      return render(request, 'index.html' )
-     
+
+def project_info(request):
+    
+    return render(request, 'project_info.html')
      
 def show_stats(request):
      

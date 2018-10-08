@@ -1,0 +1,11 @@
+nav{
+     background-color: #ff6f00  !important;
+}
+footer{
+     background-color: #ff6f00  !important;
+}
+
+#info{
+     overflow-y: scroll;
+     height: 500px;
+}
