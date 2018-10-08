@@ -10,13 +10,13 @@ from .forms import TicketForm, CommentForm
 def get_tickets(request, variety=''):
 	
 	if variety=="features":
-		results = Ticket.objects.filter(variety__exact="F")
+		results = Ticket.objects.filter(variety__exact="F").order_by('upvotes', '-date_created')
 		
 	elif variety=="bugs":
-		results = Ticket.objects.filter(variety__exact="B")
+		results = Ticket.objects.filter(variety__exact="B").order_by('upvotes', '-date_created')
 		
 	else:
-		results = Ticket.objects.all()
+		results = Ticket.objects.all().order_by('upvotes', '-date_created')
 		
 	paginator = Paginator(results, 5)
 	try:
