@@ -6,9 +6,10 @@ from django.dispatch import receiver
 # Profile is just some user's data for the users kind enough to come back ad pay again
 
 class Profile(models.Model):
+    """
+    Class extending django auth user
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    
     full_name = models.CharField(max_length=50, blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     country = models.CharField(max_length = 40, blank=True, null=True)

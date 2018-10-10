@@ -47,6 +47,7 @@ class UserRegistrationForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
+        #user has to be there because it's a not null field with no default value
         widgets = {'user': forms.HiddenInput()}
         fields = ('user', 'full_name', 'phone_number', 'country', 'postcode', 'town_or_city', 'street_address1',
         'street_address2', 'county')
