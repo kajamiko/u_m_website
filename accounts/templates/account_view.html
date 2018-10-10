@@ -18,26 +18,21 @@ Email: {{ user.email }}
              <li>County:  {{ user.profile.county }}</li>
          </ul>
      </div>
-     <div class="collapsible">
+     <ul class="collapsible">
+          <li>
           <div class="collapsible-header"><i class="material-icons">edit</i>Click to change your details</div>
-          <div class="collapsible-body">
-               <form method="POST">
+          
+               <form class="collapsible-body" method="POST">
                     {% csrf_token %}
                     {{ method_form.user.as_hidden }}
                     {{ method_form }}
           
                     <button type="submit">Save<i class="material-icons">send</i></button>
                </form>
-          </div>
-     </div>
+          </li>
+     </ul>
 
 </div>
-<script type="text/javascript" >
-     
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems);
-  });
-        
-</script>
+<script src="{% static 'js/collaps.js' %}"></script> 
+
 {% endblock %}
