@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 Username: {{ user.username }}
 Email: {{ user.email }}
@@ -17,13 +18,26 @@ Email: {{ user.email }}
              <li>County:  {{ user.profile.county }}</li>
          </ul>
      </div>
-     
-     <form method="POST">
-{% csrf_token %}
-{{ method_form.user.as_hidden }}
-{{ method_form }}
+     <div class="collapsible">
+          <div class="collapsible-header"><i class="material-icons">edit</i>Click to change your details</div>
+          <div class="collapsible-body">
+               <form method="POST">
+                    {% csrf_token %}
+                    {{ method_form.user.as_hidden }}
+                    {{ method_form }}
+          
+                    <button type="submit">Save<i class="material-icons">send</i></button>
+               </form>
+          </div>
+     </div>
 
-<button type="submit">Save<i class="material-icons">send</i></button>
-</form>
 </div>
+<script type="text/javascript" >
+     
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+  });
+        
+</script>
 {% endblock %}
