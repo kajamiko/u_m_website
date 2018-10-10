@@ -1,12 +1,11 @@
-<head>
-    <!-- code to include the highcharts and jQuery libraries goes here -->
-    <!-- load_charts filter takes a comma-separated list of id's where -->
-    <!-- the charts need to be rendered to                             -->
-    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+{% extends 'base.html' %}
+{% load static %}
+{% block title_block %} UM statistics {% endblock %}
 
-    {% load chartit %}
-    {{ ticketcht|load_charts:"container" }}
-</head>
-<body>
-    <div id='container'> </div>
-</body>
+{% block content %}
+
+
+  {{ cht_tickets|safe }}
+  <script type="text/javascript" src="http://kozea.github.com/pygal.js/latest/pygal-tooltips.min.js"></script>  
+
+{% endblock %}
