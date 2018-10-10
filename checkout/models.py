@@ -4,14 +4,20 @@ from decimal import Decimal
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=60, blank=False)
-    last_name = models.CharField(max_length=60, blank=False)
+    """
+    Order details class, some of which can be stored in Profile 
+    """
+
+    
+    full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
-    email = models.EmailField()
     country = models.CharField(max_length = 40, blank = False)
-    address = models.CharField(max_length=150, blank=False)
-    postal_code = models.CharField(max_length=30, blank=False)
-    city = models.CharField(max_length=100, blank=False)
+    postcode = models.CharField(max_length=20, blank=True)
+    town_or_city = models.CharField(max_length=40, blank=False)
+    street_address1 = models.CharField(max_length=60, blank=False)
+    street_address2 = models.CharField(max_length=60, blank=True)
+    county = models.CharField(max_length=20, blank=False)
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
