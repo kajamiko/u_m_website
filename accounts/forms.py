@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
@@ -11,7 +12,7 @@ class UserLoginForm(forms.Form):
 	
 class UserRegistrationForm(UserCreationForm):
 	"""
-	FOrm used to register a new user
+	Form used to register a new user
 	"""
 	
 	password1 = forms.CharField(label="Password",
@@ -22,6 +23,8 @@ class UserRegistrationForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['email', 'username', 'password1', 'password2']
+		
+		
 	def clean_email(self):
 		email = self.cleaned_data.get('email')
 		username = self.cleaned_data.get('username')
@@ -34,9 +37,14 @@ class UserRegistrationForm(UserCreationForm):
 		password2 = self.cleaned_data.get('password2')
 		
 		if not password1 or not password2:
-			raise ValidationError("Plaese confirm your password")
+			raise ValidationError("Please confirm your password")
 		
 		if password1 != password2:
 			raise ValidationError("The passwords must match!")
 		
 		return password2
+		
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('first_name', 'last_name', 'address', 'postal_code', 'city')

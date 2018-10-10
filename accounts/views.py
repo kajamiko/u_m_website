@@ -54,3 +54,7 @@ def registration(request):
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {
         "registration_form": registration_form})
+        
+def account_view(request):
+	current_user = request.user
+	return render(request, 'account_view.html', { 'user': current_user})

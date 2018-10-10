@@ -29,12 +29,12 @@
      		<a href="{% url 'home:homepage' %}" class="brand-logo"><span class="hide-on-med-and-down">Usos Modern</span></a>
         <ul class="right">
           {% if user.is_authenticated %}
+          <li><a href="{% url 'accounts:your_account' %}"><span class="hide-on-med-and-down">Account</span><i class="material-icons">person</i></a></li>
           <li><a href="{% url 'accounts:logout' %}"><span class="hide-on-med-and-down">Logout</span><i class="material-icons">power_settings_new</i></a></li>
           {% else %}
           <li><a href="{% url 'accounts:login' %}"><span class="hide-on-med-and-down">Login</span><i class="material-icons">person</i></a></li>
           <li><a href="{% url 'accounts:register' %}"><span class="hide-on-med-and-down">Register</span><i class="material-icons">person_add</i></a></li>
           {% endif %}
-
           <li><a href="{% url 'cart:cart_detail' %}">
             <i class="fa" style="font-size:24px">&#xf07a;</i>
            <small id="items_num" class="badge red accent-4">{{ cart|length }}</small></a></li>

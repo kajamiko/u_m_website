@@ -4,12 +4,14 @@ from decimal import Decimal
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=60)
-    last_name = models.CharField(max_length=60)
+    first_name = models.CharField(max_length=60, blank=False)
+    last_name = models.CharField(max_length=60, blank=False)
+    phone_number = models.CharField(max_length=20, blank=False)
     email = models.EmailField()
-    address = models.CharField(max_length=150)
-    postal_code = models.CharField(max_length=30)
-    city = models.CharField(max_length=100)
+    country = models.CharField(max_length = 40, blank = False)
+    address = models.CharField(max_length=150, blank=False)
+    postal_code = models.CharField(max_length=30, blank=False)
+    city = models.CharField(max_length=100, blank=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
