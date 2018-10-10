@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 Username: {{ user.username }}
-Email: {{user.email}}
-Name: {{ user.full_name }}
+Email: {{ user.email }}
 <div class="col s12 l9">
+     <div>
+         <h3>Your order's details:</h3>
+         <h6>You can change them below</h6>
+         <ul>
+             <li>Name: {{ user.profile.full_name }}</li>
+             <li>Phone: {{ user.profile.phone_number }} </li>
+             <li>Country: {{ user.profile.country }}</li>
+             <li>Postcode: {{ user.postcode }}</li>
+             <li> Town/City: {{ user.profile.town_or_city }}</li>
+             <li> Address line 1: {{ user.profile.street_address1 }}</li>
+             <li> Address line 2: {{ user.profile.street_address2 }} </li>
+             <li>County:  {{ user.profile.county }}</li>
+         </ul>
+     </div>
      
+     <form method="POST">
+{% csrf_token %}
+{{ method_form.user.as_hidden }}
+{{ method_form }}
+
+<button type="submit">Save<i class="material-icons">send</i></button>
+</form>
 </div>
 {% endblock %}
