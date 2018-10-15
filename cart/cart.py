@@ -29,10 +29,8 @@ class Cart(object):
                yield item
           
      def get_total(self):
-          total = 0
-          for item in self.cart.values():
-               total =+ int(item['donation'])
-          return total
+          
+          return sum(Decimal(item[1]['donation']) for item in self.cart.items())
           
      def add(self, ticket, donation=0, update=False):
           """

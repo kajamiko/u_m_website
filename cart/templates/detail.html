@@ -6,16 +6,16 @@
 
 <h3> Your shopping cart  </h3>
 <h4>  You have   {{ cart|length }} items in your cart. </h4>
-{% with total_items=cart|length %}
+
                     {% if cart|length %}
                         My Order Total is:
-                        <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
+                        <a href="{% url "cart:cart_detail" %}" >
                              {{ cart.get_total }}
                         </a>
                         {% else %}
                         Your cart is empty.
                     {% endif %}
-                {% endwith %}
+
        
 <div class="col l8">
 <table class="cart">
@@ -27,7 +27,6 @@
           </tr>
      </thead>
      <tbody>
-          {{ cart }}
           {% for item in cart %}
           
           {% with ticket=item.ticket %}
@@ -54,11 +53,11 @@
 </table>
 <p>
      <a class="btn btn-lg" href="{% url 'tickets:all_tickets' %}"> Continue browsing </a>
-     {% with total_items=cart|length %}
+     
                     {% if cart|length > 0 %}
      <a class="btn btn-lg" href="{% url 'checkout:order_create' %}"> Checkout </a>
      {% endif %}
-      {% endwith %}
+     
 </p>
 </div>
 

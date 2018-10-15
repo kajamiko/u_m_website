@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
-from pygal.style import DarkStyle
+from pygal.style import LightSolarizedStyle
 
-from .charts import TicketBarChart
+from .charts import FPopularityBarChart, BPopularityBarChart
 
 
 class StatsView(TemplateView):
@@ -12,17 +12,22 @@ class StatsView(TemplateView):
 
         # Instantiate our chart. We'll keep the size/style/etc.
         # config here in the view instead of `charts.py`.
-        cht_tickets = TicketBarChart(
-            height=600,
-            width=800,
-            x_title='ticket ID',
-          #   include_x_axis=True,
-            y_title='Upvotes',
-            explicit_size=True,
-          #   style=DarkStyle
-        )
+        f_tickets = FPopularityBarChart(
 
+            x_title='feature ID',
+            y_title='Upvotes',
+            explicit_size=False,
+            style=LightSolarizedStyle,
+        )
+        
+        b_tickets = BPopularityBarChart(
+
+            x_title='Issue ID',
+            y_title='Upvotes',
+            explicit_size=False,
+        )
         # Call the `.generate()` method on our chart object
         # and pass it to template context.
-        context['cht_tickets'] = cht_tickets.generate()
+        context['f_tickets'] = f_tickets.generate()
+        context['b_tickets'] = b_tickets.generate()
         return context

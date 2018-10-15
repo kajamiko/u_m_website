@@ -4,6 +4,7 @@ from tickets.models import Ticket
 from datetime import date
 from .cart import Cart
 
+
 class TestCart(TestCase):
      
      def setUp(self):
@@ -27,9 +28,11 @@ class TestCart(TestCase):
           
           )
           cart = Cart(self.request)
-          cart.add(ticket)
-          cart.add(ticket2)
+          cart.add(ticket, donation=15, update=True)
+          cart.add(ticket2, donation=10, update=True)
           cart_items = []
           print(len(cart))
-          cart.remove(ticket2)
-          print(len(cart))
+          for item in cart:
+               print(item)
+          # cart.remove(ticket2)
+          print(cart.get_total())
