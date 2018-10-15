@@ -1,7 +1,7 @@
 from django import forms
 from material import *
 
-DONATION_VALUE_CHOICES = [(i, str(i)) for i in range(15, 100, 5)]
+DONATION_VALUE_CHOICES = [(i, str(i)) for i in range(5, 100, 5)]
 
 class CartAddTicketForm(forms.Form):
      

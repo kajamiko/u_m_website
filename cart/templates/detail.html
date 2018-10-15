@@ -6,17 +6,14 @@
 
 <h3> Your shopping cart  </h3>
 <h4>  You have   {{ cart|length }} items in your cart. </h4>
-
+<h5><b> Please notice the minimm donation amount per ticket is £5.</b> </h5>
                     {% if cart|length %}
-                        My Order Total is:
-                        <a href="{% url "cart:cart_detail" %}" >
+                        Your Order Total is:
                              {{ cart.get_total }}
-                        </a>
                         {% else %}
                         Your cart is empty.
                     {% endif %}
 
-       
 <div class="col l8">
 <table class="cart">
      <thead>
@@ -53,8 +50,9 @@
 </table>
 <p>
      <a class="btn btn-lg" href="{% url 'tickets:all_tickets' %}"> Continue browsing </a>
-     
+    
                     {% if cart|length > 0 %}
+                    <h5><b> Your Order Total is: £{{ cart.get_total }}</b></h5>
      <a class="btn btn-lg" href="{% url 'checkout:order_create' %}"> Checkout </a>
      {% endif %}
      

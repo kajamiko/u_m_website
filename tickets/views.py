@@ -4,11 +4,11 @@ from .models import Ticket
 from .models import Comment
 from django.db.models import F
 from .forms import TicketForm, CommentForm
+from .tickets_upvote import upvote_ticket
 
 
 
 def get_tickets(request, variety=''):
-	
 	if variety=="features":
 		results = Ticket.objects.filter(variety__exact="F").order_by('upvotes', '-date_created')
 		
@@ -26,8 +26,6 @@ def get_tickets(request, variety=''):
 		
 	tickets = paginator.get_page(page)
 	return render(request, 'ticket_list.html', {'tickets': tickets})
-	
-
 	
 
 def ticket_details(request, ticket_id):
@@ -50,10 +48,8 @@ def ticket_details(request, ticket_id):
 	return render(request, 'ticket_detail.html', {'form': form, 'ticket': result, 'comments': comments, 'comments_quantity': comments_quantity})
 
 def upvote_simple(request, ticket_id):
-	ticket = get_object_or_404(Ticket, pk=ticket_id)	
-	ticket.upvotes = F('upvotes') + 1
-	ticket.save()
-	return redirect('tickets:ticket_details', ticket_id=ticket.id)
+	upvote_ticket(ticket_id)
+	return redirect('tickets:ticket_details', ticket_id=ticket_id)
 
 def create_ticket(request):
 	if request.method == 'POST':

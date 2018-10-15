@@ -1,9 +1,33 @@
 {% extends 'ticket_base.html' %}
 {% block ticket_content %}
 
+<table>
+     <tr><th><h3></h3><b>This comment is for:</b></h3></th></tr>
+     <tr>
+       <th>Ticket</th>
+       <th>Variety</th>
+       <th>Issue</th>
+       <th>Verified</th>
+       <th>Status</th>
+     </tr>
+     <tr>
+     
+     <tr>
+      <td>#{{ comment.ticket.id }}</td>
+      <td>{{ comment.ticket.variety }}</td>
+      <td>  {{ comment.ticket.issue }} </td>
+      {% if comment.ticket.verified %}
+      <td>Yes </td>
+      {% else%}
+      <td> No </td>
+      {% endif %}
+      <td>{{ comment.ticket.status }}</td>
+      </tr>
+     
+    
+</table>
       <ul class="collection">
 
-    
           <li class="collection-item avatar">
               <i class="material-icons circle">account_box</i>  
            <span class="title"><b><a href="{% url 'tickets:comment_details' comment.id %}">{{ comment.title }}</a></b></span>

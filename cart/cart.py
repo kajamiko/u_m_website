@@ -1,7 +1,6 @@
 from django.conf import settings
 from tickets.models import Ticket
 from django.contrib import messages
-from decimal import Decimal
 
 class Cart(object):
      
@@ -30,7 +29,7 @@ class Cart(object):
           
      def get_total(self):
           
-          return sum(Decimal(item[1]['donation']) for item in self.cart.items())
+          return sum(item[1]['donation'] for item in self.cart.items())
           
      def add(self, ticket, donation=0, update=False):
           """
@@ -38,7 +37,7 @@ class Cart(object):
           """
           ticket_id = str(ticket.id)
           if ticket_id not in self.cart:
-               self.cart[ticket_id] = {'donation': 0}
+               self.cart[ticket_id] = {'donation': 5}
           if update:
                self.cart[ticket_id]['donation'] = donation
           self.save()

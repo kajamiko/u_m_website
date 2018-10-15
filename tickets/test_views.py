@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Ticket
 from .models import Comment
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, reverse
 
 class test_views(TestCase):
 
@@ -10,7 +10,7 @@ class test_views(TestCase):
 
 		ticket = Ticket(variety='B', issue='serious issue')
 		ticket.save()
-		homepage = self.client.get('/')
+		homepage = self.client.get(reverse('tickets:all_tickets'))
 		self.assertEqual(homepage.status_code, 200)
 		self.assertTemplateUsed(homepage, 'ticket_list.html')
 		self.assertEqual(len(homepage.context['tickets']), 1)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from cart.cart import Cart
 from .forms import OrderCreateForm
+from tickets.tickets_upvote import upvote_ticket
 
 def create_order(request):
      cart = Cart(request)
@@ -15,6 +16,7 @@ def create_order(request):
                          ticket=item['ticket'],
                          donation=item['donation']
                          )
+                    upvote_ticket(item['ticket'].id)
                cart.clear()
           return render(request, 'created.html')
      else:
