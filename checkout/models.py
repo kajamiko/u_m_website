@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tickets.models import Ticket
-from decimal import Decimal
 
 
 class Order(models.Model):
@@ -45,5 +44,5 @@ class OrderItem(models.Model):
         return 'my id is {0},order id is {1}, ticket is {2}'.format(self.id, self.order.id, self.ticket.id)
         
     def get_cost(self):
-        return Decimal(self.donation)
+        return self.donation
     

@@ -3,6 +3,10 @@
 {% load static %}
 {% block title_block %}Checkout {% endblock %}
 {% block content %}
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+
 <h4>Checkout</h4>
 <div class="col l8 ">
           
@@ -23,14 +27,25 @@
                </tr>
                {% endwith %}
           {% endfor %}
-          <tr><td><h6><b>Your Order Total is: £{{ cart.get_total }}</b></h6></td></tr>
+          <tr><td><h6><b>Your Order Total is: GBP {{ cart.get_total }}</b></h6></td></tr>
 
     </table> 
      <form method="POST">
+           <legend>Payment Details</legend>
+          <div id="credit-card-errors" style="display-none">
+             <div class="alert-message bloack-message error" id="stripe-error-message"></div>
+         </div>
           {% csrf_token %}
           {{ form.as_p }}<br>
+          <!--<input type="submit" class="btn btn-primary" value="Submit order">-->
+           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+               data-key="{{ stripe_key }}"
+               data-description="A Django Charge"
+               data-amount="{{ total }}"
+               data-locale="auto"
+               data-currency="gbp">
+           </script>
           <input type="submit" class="btn btn-primary" value="Submit order">
      </form>
-
 </div>
 {% endblock %}
