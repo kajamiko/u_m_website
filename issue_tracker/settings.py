@@ -135,8 +135,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     )
 
-STRIPE_PUBLISHABLE=os.getenv('STRIPE_PUBLISHABLE')
-STRIPE_SECRET=os.getenv('STRIPE_SECRET')
+STRIPE_PUBLISHABLE=os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET=os.getenv('STRIPE_SECRET_KEY')
 
 MEDIA_ROOT = os.path.join(BASE_DIR)
 MEDIA_URL = '/media/'

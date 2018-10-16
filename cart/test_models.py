@@ -5,7 +5,7 @@ from datetime import date
 from .cart import Cart
 
 
-class TestCart(TestCase):
+class TestCartModels(TestCase):
      
      def setUp(self):
         self.request = RequestFactory()

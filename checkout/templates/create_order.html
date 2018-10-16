@@ -26,7 +26,7 @@
           <tr><td><h6><b>Your Order Total is: £{{ cart.get_total }}</b></h6></td></tr>
 
     </table> 
-     <form action="." method="post">
+     <form method="POST">
           {% csrf_token %}
           {{ form.as_p }}<br>
           <input type="submit" class="btn btn-primary" value="Submit order">

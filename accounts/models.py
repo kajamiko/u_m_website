@@ -19,6 +19,10 @@ class Profile(models.Model):
     street_address2 = models.CharField(max_length=60, blank=True, null=True)
     county = models.CharField(max_length=20, blank=True, null=True)
      
+     
+
+
+        
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

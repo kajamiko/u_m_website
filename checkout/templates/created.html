@@ -11,6 +11,11 @@
                 <h3 class="page-header">Thank You For Shopping With Us
                 </h3>
                 <p>Your order has been successfully completed. Your order number is <strong>{{ order.id }}</strong>.</p>
-
+                <h5>Details od your order: </h5>
+                <ul>
+                    {% for item in items %}
+                    <li>item.ticket.id</li>
+                    {% endfor %}
+                </ul>
     </div>
 {% endblock %}
