@@ -52,8 +52,10 @@ def create_order(request):
                     messages.error(request, "Unable to take payment")
      else:
           if request.user.is_authenticated:
-               prof =request.user.profile
-               data = {'full_name': prof.full_name,
+               prof = request.user.profile
+               data = {
+               'user': request.user,
+               'full_name': prof.full_name,
                'phone_number': prof.phone_number, 
                'country': prof.country,
                'postcode': prof.postcode, 
@@ -68,4 +70,3 @@ def create_order(request):
                form = OrderCreateForm()
           payment_form = MakePaymentForm()
      return render(request, 'create_order.html', {'form': form, 'total': total, 'stripe_key': stripe_key})
-     

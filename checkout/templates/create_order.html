@@ -36,7 +36,8 @@
              <div class="alert-message bloack-message error" id="stripe-error-message"></div>
          </div>
           {% csrf_token %}
-          {{ form.as_p }}<br>
+          {{ form.user.as_hidden }}
+          {{ form.as_p }}
           <!--<input type="submit" class="btn btn-primary" value="Submit order">-->
            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                data-key="{{ stripe_key }}"

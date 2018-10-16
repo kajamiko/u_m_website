@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from checkout.models import Order, OrderItem
 from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
 
 def logout(request):
@@ -59,7 +60,7 @@ def account_view(request):
 	_user = request.user
 	prof = _user.profile
 	data = {'user': prof.user, 'full_name': prof.full_name, 'phone_number': prof.phone_number, 'country': prof.country, 'postcode': prof.postcode, 'town_or_city': prof.town_or_city, 'street_address1': prof.street_address1, 'street_address2': prof.street_address2, 'county': prof.county }
-
+	orders = Order.objects.filter(user=request.user)
 	if request.method == "POST":
 		method_form = ProfileForm(request.POST, instance=request.user.profile)
 		if method_form.is_valid():
@@ -68,4 +69,4 @@ def account_view(request):
 			return redirect(reverse('accounts:your_account'))
 	else:
 		method_form = ProfileForm(initial=data)
-	return render(request, 'account_view.html', { 'user': _user, 'method_form': method_form })
+	return render(request, 'account_view.html', { 'user': _user, 'method_form': method_form, 'orders': orders })

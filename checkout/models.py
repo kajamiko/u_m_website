@@ -26,13 +26,17 @@ class Order(models.Model):
         ordering = ('-created', )
  
     def __str__(self):
-        return 'Order {0}, with {2} items, total {1}'.format(self.id, self.get_total_cost(), self.get_items_quantity())
+        return 'Order #{0}, for {2} item(s), total cost of {1}.'.format(self.id, self.get_total_cost(), self.get_items_quantity())
  
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
     
     def get_items_quantity(self):
         return sum(1 for item in self.items.all())
+        
+    def return_items(self):
+        
+        return list(item.ticket.issue for item in self.items.all())
  
  
 class OrderItem(models.Model):
@@ -41,7 +45,7 @@ class OrderItem(models.Model):
     donation = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
-        return 'my id is {0},order id is {1}, ticket is {2}'.format(self.id, self.order.id, self.ticket.id)
+        return 'order id is {0}, ticket is {1} - {2}'.format(self.order.id, self.ticket.id, self.ticket.issue)
         
     def get_cost(self):
         return self.donation

@@ -52,7 +52,6 @@ class BPopularityBarChart():
         for key, value in chart_data.items():
             self.chart.add(key, value)
         
-        
         # Return the rendered SVG
         return self.chart.render(is_unicode=True)
         

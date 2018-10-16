@@ -17,6 +17,26 @@ Email: {{ user.email }}
                     <button type="submit">Save<i class="material-icons">send</i></button>
                </form>
           </li>
+          
+          <li>
+          <div class="collapsible-header"><i class="material-icons">receipt</i>Click to see your orders</div>
+          
+               <div class="collapsible-body">
+                    <ul>
+                    {% for order in orders %}
+                       <li>  {{ order }} </li>
+                       <li>For tickets following: 
+                            <ul>
+                            {% for item in order.return_items %}
+                                 <li>{{ item }}</li>
+                            {% endfor %}
+                            </ul>
+                       </li>
+                       
+                    {% endfor %}
+                    </ul>
+               </div>
+          </li>
      </ul>
 
 </div>
