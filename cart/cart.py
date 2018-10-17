@@ -29,7 +29,7 @@ class Cart(object):
           
      def get_total(self):
           
-          return sum(item[1]['donation'] for item in self.cart.items())
+          return sum(int(item[1]['donation']) for item in self.cart.items())
           
      def add(self, ticket, donation=0, update=False):
           """
