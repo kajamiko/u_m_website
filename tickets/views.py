@@ -43,8 +43,11 @@ def ticket_details(request, ticket_id):
 			added_comment.save()
 			return redirect("tickets:comment_details", comment_id=added_comment.id)
 	else:
-		form = CommentForm()
-		
+		if request.user.is_authenticated:
+			data = {'user': request.user, 'author': request.user.username }
+			form = CommentForm(initial=data)
+		else:		
+			form = CommentForm()
 	
 	return render(request, 'ticket_detail.html', {'form': form, 'ticket': result, 'comments': comments, 'comments_quantity': comments_quantity})
 
@@ -67,7 +70,20 @@ def create_ticket(request):
 
 def comment_details(request, comment_id):
 	comment = get_object_or_404(Comment, pk = comment_id)
-	return render(request, 'comment_detail.html', {'comment': comment})
+	form = CommentForm()
+	if request.method == 'POST':
+		form = CommentForm(request.POST, request.FILES)
+		if form.is_valid():
+			updated_comment = form.save(commit=False)
+			updated_comment.ticket = comment.ticket
+			updated_comment.author = request.user.username
+			updated_comment.save()
+			return redirect("tickets:comment_details", comment_id=updated_comment.id)
+	else:
+		if request.user.is_authenticated:
+			data = {'user': request.user, 'author': request.user.username, 'title': comment.title, 'content': comment.content }
+			form = CommentForm(initial=data)
+	return render(request, 'comment_detail.html', {'comment': comment, 'form': form})
 	
 def search_for_ticket(request):
 	results = Ticket.objects.filter(issue__icontains=request.GET['q'])
@@ -76,6 +92,7 @@ def search_for_ticket(request):
 		page = request.GET.get('page')
 	except PageNotAnInteger:
 		page = paginator.page(1)
-		
+	
+	
 	tickets = paginator.get_page(page)
 	return render(request, 'ticket_list.html', {'tickets': tickets})

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 TICKET_VARIETIES_CHOICES=(
@@ -10,7 +11,11 @@ class Ticket(models.Model):
 	variety = models.CharField(max_length=7, choices=TICKET_VARIETIES_CHOICES, blank=False)
 	upvotes = models.IntegerField(default=0)
 	date_created = models.DateField(auto_now_add=True)
+	date_created.editable = True
 	date_verified = models.DateField(null=True)
+	date_start_dev = models.DateField(null=True,blank=True)
+	date_done = models.DateField(null=True,  blank=True)
+	date_start_dev = models.DateField(null=True,  blank=True)
 	author = models.CharField(max_length=20, blank=True)
 	verified = models.BooleanField(default=False)
 	status = models.CharField(max_length=6, default='to do')
@@ -23,6 +28,7 @@ class Ticket(models.Model):
 
 class Comment(models.Model):
 	ticket = models.ForeignKey(Ticket, null=False, on_delete = models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 	author = models.CharField(max_length=20, blank=False)
 	title = models.CharField(max_length=40, blank = False)
 	content = models.TextField(blank = False)

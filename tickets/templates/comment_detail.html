@@ -36,8 +36,21 @@
           <a href="#" class="secondary-content">{{ comment.author }}</i></a>
 
            </li>
-    
+     </ul>
+{% if request.user.username == comment.author %}
+             <ul class="collapsible">
+          <li>
+          <div class="collapsible-header"><i class="material-icons">edit</i>Click to edit your comment</div>
+          
+               <form class="collapsible-body" method="POST">
+                    {% csrf_token %}
+                    {{ form.user.as_hidden }}
+                    {{ form }}
+          
+                    <button type="submit">Save<i class="material-icons">send</i></button>
+               </form>
+          </li>
+            {% endif %}
 
- </ul>
 
 {% endblock %}

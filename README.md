@@ -1,18 +1,18 @@
-The USOS Modern website
+# The Usos Modern website
 
-USOS Modern is a website of a non-existing, but very useful (if it existed) mobile app - USOS Modern APP. 
+## What is Usos Modern?
+Usos Modern is a website of a non-existing, but very useful (if it existed) mobile app - USOS Modern App, that is supposed to  be a helper when using an infamous USOS system, used for some reasons by polish universities.
 
+Most important USOS Modern App features are: scheduling, message sending and receiving and making changes to the university account. And anything users would like to know about USOS Modern App, it can be found on Usos Modern website.
 
+Usos Modern website is a project run by USOS Modern App's developers, to help making their app even better. It contains FAQ about their app and about their sales policy, a blog and most importantly - an amazing issue tracker, where users can take active part in their favourite app's development.
 
 
 
 
 Ad cat icon: changed from materialize to fontawesome because I wanted a badge with info on a cart icon
 
-Your Project's Name
-One or two paragraphs providing an overview of your project.
 
-Essentially, this part is your sales pitch.
 
 UX
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
@@ -22,8 +22,19 @@ In particular, as part of this section we recommend that you provide a list of U
 As a user type, I want to perform an action, so that I can achieve a goal.
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
-Features
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+## Features
+
+1. Home - on this part of the project, users can find all informations about the website and app that the website is created for, including statistics.
+
+2. Accounts - users can register and log ino their accounts. They can also keep some details stored in their 'accounts' section, to make checkout easier.
+
+3. Cart - cart is an separate app holding cart logic - users can add, remove or modify their orders as needed.
+
+4. Checkout - the Usos Modern's checkout is made through Stripe. No sensitive payment or credit card details are stored in database, nor are processed by the app itself.
+
+5. Tickets - it is where all the issue tracker logic is stored. Tickets can be created by logged in users. They can also be upvoted or donated and - last but not least - commented.
+
+
 
 Existing Features
 Feature 1 - allows users X to achieve Y, by having them fill out Z

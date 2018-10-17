@@ -11,4 +11,5 @@ class TicketForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
-		fields = ('author', 'title', 'content')
+		widgets = {'user': forms.HiddenInput()}
+		fields = ('user','author', 'title', 'content')

@@ -40,7 +40,7 @@
          </td>
          <td>
          {{ ticket.upvotes }}
-           {% if ticket.status == 'done'%}
+           {% if ticket.status != 'done'%}
             {% if ticket.variety == 'B' %}
            <a href="{% url 'tickets:upvote_simple' ticket.id %}">Up</a>
             {% else %}
@@ -55,6 +55,7 @@
    <form method="POST">
         <legend>Comment this ticket: </legend>
         {% csrf_token %}
+        {{ form.user.as_hidden }}
         {{ form }}
         <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Cancel</a>
         <button type="submit" name="_submit" class="btn">Comment</button>
@@ -70,7 +71,7 @@
            <p> {{ comment.content | slice:":30"  }}</p>
            <span>{{ comment.date_published }}</span>
           <a href="#" class="secondary-content">{{ comment.author }}</i></a>
-
+            
            </li>
      {% endfor %}
  </ul>
