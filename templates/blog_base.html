@@ -18,8 +18,28 @@
         <nav class="navbar navbar-expand-sm">
             <div class="container nav-container">
                 
+                
                 <a class="navbar-brand text-white" href="{% url 'weblog:Index' %}">Usos Modern blog</a>
-                <a href="/" class="navbar-brand"><img id="brand_blog" src="{% static '/images/um-logo.png' %}"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+                  </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                 <ul class="navbar-nav ">
+                      <li class="nav-item active">
+                        <a href="/" class="navbar-brand"><img id="brand_blog" src="{% static '/images/um-logo.png' %}"></a>
+                      </li>
+                      </ul>
+                      <ul class="navbar-nav ">
+                      {% if user.is_authenticated %}
+                      <li><a class="mx-2" href="{% url 'accounts:your_account' %}"><span class="hidden-md-down text-white">Account</span><i class="fas fa-user-alt  text-white"></i></a></li>
+                      <li><a class="mx-2" href="{% url 'accounts:logout' %}"><span class="hidden-md-down text-white">Logout</span><i class="fas fa-sign-out-alt  text-white"></i></a></li>
+                      {% else %}
+                      <li><a class="mx-2" href="{% url 'accounts:login' %}"><span class="hidden-md-down text-white">Login</span><i class="fas fa-sign-in-alt  text-white"></i></a></li>
+                      <li><a class="mx-2" href="{% url 'accounts:register' %}"><span class="hidden-md-down text-white">Register</span><i class="fas fa-user-plus  text-white"></i></a></li>
+                      {% endif %}
+                      
+                      </ul>
+                     </div>
             </div>
         </nav>
         </div>
