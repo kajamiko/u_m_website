@@ -1,6 +1,12 @@
 {% extends 'ticket_base.html' %}
 {% block ticket_content %}
-
+    {% if messages %}
+  <div>
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+  </div>
+  {% endif %}
 <table>
      <tr>
        <th>Ticket</th>
