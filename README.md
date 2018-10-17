@@ -5,14 +5,11 @@ Usos Modern is a website of a non-existing, but very useful (if it existed) mobi
 
 Most important USOS Modern App features are: scheduling, message sending and receiving and making changes to the university account. And anything users would like to know about USOS Modern App, it can be found on Usos Modern website.
 
-Usos Modern website is a project run by USOS Modern App's developers, to help making their app even better. It contains FAQ about their app and about their sales policy, a blog and most importantly - an amazing issue tracker, where users can take active part in their favourite app's development.
-
+Usos Modern website is a project run by USOS Modern App's developers, to help making their app even better. It contains FAQ about their app and about their sales policy, a blog and most importantly - a heart of the project, an amazing issue tracker, where users can take active part in their favourite app's development.
 
 
 
 Ad cat icon: changed from materialize to fontawesome because I wanted a badge with info on a cart icon
-
-
 
 UX
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
@@ -34,11 +31,34 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 5. Tickets - it is where all the issue tracker logic is stored. Tickets can be created by logged in users. They can also be upvoted or donated and - last but not least - commented.
 
+6. Blog - users cannot add posts, but register users can add comments.
 
 
-Existing Features
+## Existing Features
 Feature 1 - allows users X to achieve Y, by having them fill out Z
 ...
+
+1. Home (home app)
+ 1. Homepage - good looking homepage with a carousel, gives users a chance to get familiar with navigation, which is similar across the whole site. There is a top navbar with a logo and account navigation links. There is also a side navigation list, with links to info pages, as informatin is what user may want to know first.
+ 2. About UM App - App's FAQ, links to Google Play and Apple Stores, as it would be on a real project's website.
+ 3. Our Promise - developer's business plan described and some useful information about the Issue Tracker.
+ 4. Statistics - contains charts summarising Issue Tracker.
+ 
+
+2. Accounts (accounts app)
+ 1. Registering - users can register by filling the form on the "Register" page. 
+ 2. Logging in - to log in, user need to provide his username and password on a "Log in" page.
+ 3. Account - users can see their accounts by clicking on "Account" link the top navbar. Here, they can find some details useful when purchasing upvotes and their previous orders.
+ 4. Having an account allows users, among others, to comment blog posts and to edit their Issue Tracker comments.
+ 
+3. Cart (cart app)
+  1. Users can add a ticket to the cart, by clicking 'Up(add to cart)' link on the "ticket details" page. The number of items displayed on a cart icon in a top right corner will increase. By default, the ticket's donatino is £5, but it can be easily updated.
+  2. User can see his cart's content by clicking on the cart icon in the top right corner (on the navbar). This will redirect to 'cart detail page'.
+  3. While on ''cart detail page', user can update ticket's donation. To do so, user can choose amount from the choice field and click 'Set donation'. Page will refresh and the new amount can be seen next to the ticket's title.
+  4. From this point, user can either click 'Continue browsing' to see other tickets, or go to checkout by clicking 'Checkout' button.
+  5. To 
+ 
+  
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
