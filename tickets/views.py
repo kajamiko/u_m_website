@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import Ticket
 from .models import Comment
@@ -47,6 +48,7 @@ def ticket_details(request, ticket_id):
 	
 	return render(request, 'ticket_detail.html', {'form': form, 'ticket': result, 'comments': comments, 'comments_quantity': comments_quantity})
 
+@login_required
 def upvote_simple(request, ticket_id):
 	upvote_ticket(ticket_id)
 	return redirect('tickets:ticket_details', ticket_id=ticket_id)
@@ -65,3 +67,14 @@ def create_ticket(request):
 def comment_details(request, comment_id):
 	comment = get_object_or_404(Comment, pk = comment_id)
 	return render(request, 'comment_detail.html', {'comment': comment})
+	
+def search_for_ticket(request):
+	results = Ticket.objects.filter(issue__icontains=request.GET['q'])
+	paginator = Paginator(results, 5)
+	try:
+		page = request.GET.get('page')
+	except PageNotAnInteger:
+		page = paginator.page(1)
+		
+	tickets = paginator.get_page(page)
+	return render(request, 'ticket_list.html', {'tickets': tickets})
