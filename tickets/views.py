@@ -52,7 +52,8 @@ def ticket_details(request, ticket_id):
 def upvote_simple(request, ticket_id):
 	upvote_ticket(ticket_id)
 	return redirect('tickets:ticket_details', ticket_id=ticket_id)
-
+	
+@login_required
 def create_ticket(request):
 	if request.method == 'POST':
 		form = TicketForm(request.POST, request.FILES)

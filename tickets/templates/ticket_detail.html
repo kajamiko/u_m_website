@@ -40,11 +40,13 @@
          </td>
          <td>
          {{ ticket.upvotes }}
-          {% if ticket.variety == 'B' %}
-         <a href="{% url 'tickets:upvote_simple' ticket.id %}">Up</a>
-          {% else %}
-          <a href="{% url 'cart:add_to_cart' ticket.id %}">Up(add to cart)</a>
-          {% endif %}
+           {% if ticket.status == 'done'%}
+            {% if ticket.variety == 'B' %}
+           <a href="{% url 'tickets:upvote_simple' ticket.id %}">Up</a>
+            {% else %}
+            <a href="{% url 'cart:add_to_cart' ticket.id %}">Up(add to cart)</a>
+            {% endif %}
+           {% endif %}
          </td>
      <tr>
 </table>

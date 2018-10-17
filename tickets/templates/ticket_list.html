@@ -18,7 +18,7 @@
   {% else %}
  <td> Bug </td>
   {% endif %}
- <td>  {{ ticket.issue }} </td>
+ <td> <a href="{% url 'tickets:ticket_details' ticket.id %}"> {{ ticket.issue }}</a> </td>
  {% if ticket.verified %}
  <td>Yes </td>
   {% else%}

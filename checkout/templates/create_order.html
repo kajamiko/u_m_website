@@ -38,7 +38,6 @@
           {% csrf_token %}
           {{ form.user.as_hidden }}
           {{ form.as_p }}
-          <!--<input type="submit" class="btn btn-primary" value="Submit order">-->
            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                data-key="{{ stripe_key }}"
                data-description="A Django Charge"
@@ -46,7 +45,6 @@
                data-locale="auto"
                data-currency="gbp">
            </script>
-          <input type="submit" class="btn btn-primary" value="Submit order">
      </form>
 </div>
 {% endblock %}
