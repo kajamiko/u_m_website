@@ -51,14 +51,22 @@ Feature 1 - allows users X to achieve Y, by having them fill out Z
  3. Account - users can see their accounts by clicking on "Account" link the top navbar. Here, they can find some details useful when purchasing upvotes and their previous orders.
  4. Having an account allows users, among others, to comment blog posts and to edit their Issue Tracker comments.
  
-3. Cart (cart app)
+3.
+4. Cart (cart app)
   1. Users can add a ticket to the cart, by clicking 'Up(add to cart)' link on the "ticket details" page. The number of items displayed on a cart icon in a top right corner will increase. By default, the ticket's donatino is £5, but it can be easily updated.
   2. User can see his cart's content by clicking on the cart icon in the top right corner (on the navbar). This will redirect to 'cart detail page'.
   3. While on ''cart detail page', user can update ticket's donation. To do so, user can choose amount from the choice field and click 'Set donation'. Page will refresh and the new amount can be seen next to the ticket's title.
   4. From this point, user can either click 'Continue browsing' to see other tickets, or go to checkout by clicking 'Checkout' button.
-  5. To 
+  5. To complete the order, user should fill the order form, and then click 'Pay with card' button. After the payment is accepted, order is completed. The tickets paid are upvoted now.
  
-  
+5. Checkout
+   5. To complete the order, user should fill the order form, and then click 'Pay with card' button. After the payment is accepted, order is completed. The tickets paid are upvoted now.
+   6. User can see transaction summary soon after it is completed. The order details will be displayed after the page is refreshed.
+   7. Orders can be made anonymously or by users with active accounts. However, only registered users can see their orders after, on their "Account" page.
+
+5. 
+
+
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
