@@ -3,7 +3,7 @@
 {% block title_block %}Cart {% endblock %}
 
 {% block content %}
-
+<div class="col s12 l9 tb">
 <h3> Your shopping cart  </h3>
 <h4>  You have   {{ cart|length }} items in your cart. </h4>
 <h5><b> Please notice the minimum donation amount per ticket is £5.</b> </h5>
@@ -14,7 +14,6 @@
                         Your cart is empty.
                     {% endif %}
 
-<div class="col l8">
 <table class="cart">
      <thead>
           <tr>
@@ -42,7 +41,7 @@
                         </div>
                     </form>
                </td>
-               <td><a href="{% url 'cart:cart_remove' ticket.id %}">Remove</a></td>
+               <td><a href="{% url 'cart:cart_remove' ticket.id %}"><i class="material-icons black-text">delete</i></a></td>
           </tr>
           {% endwith %}
           {% endfor %}          

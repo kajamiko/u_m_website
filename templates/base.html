@@ -78,17 +78,29 @@
  <footer class="page-footer">
           <div class="container">
             <div class="row">
-              <div class="col l5 s12">
+              <div class="col l3 s12">
                 <h5 class="white-text">USOS modern website</h5>
               </div>
-              <div class="col l4 offset-l2 s12">
+              <div class="col l4 s6">
                 <ul class="list-unstyled">
                   <li><strong>Contact</strong></li>
                   <li class="grey-text text-lighten-3" href="#!">kajaths@gmail.com</li>
                   <li><a class="grey-text text-lighten-3" href="https://github.com/kajamiko">Github</a></li>
+
+                  <li><a class="grey-text text-lighten-3" href="{% url 'home:developers_section' %}">For developers</a></li>
                 </ul>
               </div>
+              
+              <div class="col l4 s6">
+              <ul class="list-unstyled">
+                <li><strong>Other Websites</strong></li>
+                <li><a class="grey-text text-lighten-3" href="https://kajamiko.github.io/fabulous_mr_d/">Fabulous Mr D</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://ridiculous-riddle-quiz.herokuapp.com/">Ridiculous Riddle</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://yummy-online-cookbook.herokuapp.com/">Yummy!</a></li>
+              </ul>
+          </div>
             </div>
+            
           </div>
           <div class="footer-copyright">
             <div class="container">
@@ -100,6 +112,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-       <script src="{% static "js/menu.js"%}"></script> 
+       <script src="{% static "js/menu.js" %}"></script> 
 </body>
 </html>

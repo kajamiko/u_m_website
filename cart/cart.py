@@ -61,6 +61,7 @@ class Cart(object):
           
           self.session[settings.CART_SESSION_ID] = {}
           self.session["modified"] = True
+          self.cart = self.session[settings.CART_SESSION_ID] 
           
      def __len__(self):
           return len(self.cart)

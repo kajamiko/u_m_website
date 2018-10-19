@@ -1,4 +1,5 @@
 {% extends 'ticket_base.html' %}
+{% load static %}
 {% block ticket_content %}
     {% if messages %}
   <div>
@@ -50,15 +51,19 @@
             {% if ticket.variety == 'B' %}
            <a href="{% url 'tickets:upvote_simple' ticket.id %}">Up</a>
             {% else %}
-            <a href="{% url 'cart:add_to_cart' ticket.id %}">Up(add to cart)</a>
+            <a href="{% url 'cart:add_to_cart' ticket.id %}"><span class="hide-on-med-and-down">Up(add to cart)</span><i class="material-icons black-text">add_shopping_cart</i></a>
             {% endif %}
            {% endif %}
          </td>
      <tr>
 </table>
  <div><span>Comments: {{ comments_quantity }}</span></div>
-<div class="col l6">
-   <form method="POST">
+
+     
+<ul class="collapsible">
+     <li>
+     <div class="collapsible-header"><i class="material-icons">message</i>Click to comment</div>
+   <form class="collapsible-body" method="POST">
         <legend>Comment this ticket: </legend>
         {% csrf_token %}
         {{ form.user.as_hidden }}
@@ -66,9 +71,16 @@
         <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Cancel</a>
         <button type="submit" name="_submit" class="btn">Comment</button>
   </form>
+  </li>
+  </ul>
 
 {% if comments %}
-      <ul class="collection">
+
+      <ul class="collection collapsible">
+           <li>
+          <div class="collapsible-header"><i class="material-icons">comment</i>Click to see comments</div>
+          <div  class="collapsible-body">
+          <ul>
      {% for comment in comments %}
     
           <li class="collection-item avatar">
@@ -80,7 +92,12 @@
             
            </li>
      {% endfor %}
+     </ul>
+     </div>
+     </li>
  </ul>
 {% endif %}
-</div>
+
+
+<script src="{% static 'js/collaps.js' %}"></script> 
 {% endblock %}

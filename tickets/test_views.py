@@ -57,7 +57,7 @@ class TestViews(TestCase):
 		page = self.client.get('/tickets/{0}/'.format(ticket.id))
 		self.assertEqual(page.status_code, 200)
 		self.assertTemplateUsed(page, 'ticket_detail.html')
-		self.assertIn("serious issue", str(response.content))
+		self.assertIn("serious issue", str(page.content))
 
 	def test_ticket_detail_page_for_items_doest_exist(self):
 		"""

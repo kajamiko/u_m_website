@@ -17,3 +17,6 @@ def promise(request):
     return render(request, 'promise.html')    
      
      
+def developers_section(request):
+     
+     return render(request, 'for_devs.html')

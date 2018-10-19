@@ -5,6 +5,9 @@ from .forms import CartAddTicketForm
 
 
 def add_to_cart(request, ticket_id):
+     """
+     A view for add/update ticket to cart
+     """
      cart = Cart(request)
      ticket = get_object_or_404(Ticket, id=ticket_id)
      if request.method == 'POST':
@@ -20,12 +23,18 @@ def add_to_cart(request, ticket_id):
 
                     
 def cart_remove(request, ticket_id):
+     """
+     Removing from the cart
+     """
      cart = Cart(request)
      ticket = get_object_or_404(Ticket, id=ticket_id)
      cart.remove(ticket)
      return redirect('cart:cart_detail')
      
 def cart_detail(request):
+     """
+     displaying ticket and in fact updating each time the page is reloaded
+     """
      cart = Cart(request)
      for item in cart:
           item['update_donation_form'] = CartAddTicketForm(initial={'donation': item['donation'], 'update': True})

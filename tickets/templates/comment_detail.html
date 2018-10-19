@@ -13,7 +13,7 @@
      <tr>
      
      <tr>
-      <td>#{{ comment.ticket.id }}</td>
+      <td><a href="{% url 'tickets:ticket_details' comment.ticket.id %}">#{{ comment.ticket.id }}</a></td>
       <td>{{ comment.ticket.variety }}</td>
       <td>  {{ comment.ticket.issue }} </td>
       {% if comment.ticket.verified %}
@@ -50,6 +50,7 @@
                     <button type="submit">Save<i class="material-icons">send</i></button>
                </form>
           </li>
+          </ul>
             {% endif %}
 
 

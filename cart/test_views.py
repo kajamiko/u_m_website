@@ -36,4 +36,12 @@ class TestCartViews(TestCase):
      def test_cart_detail_view(self):
           response = self.client.get(reverse('cart:cart_detail'))
           self.assertTemplateUsed(response, 'detail.html')
-          # print(response.context['cart'])
+          self.assertIn('Your cart is empty', str(response.content))
+          
+     def test_updating_cart_view(self):
+          ticket = Ticket(variety='F', issue='some feature')
+          ticket.save()
+          self.client.get(reverse('cart:add_to_cart', args=(ticket.id,)))
+          page = self.client.post(reverse('cart:add_to_cart', args=(str(ticket.id))), data={"donation": 20, 'update': True})
+          session = self.client.session
+          self.assertEqual(session[settings.CART_SESSION_ID], {'1': {'donation': '20'}})
