@@ -106,7 +106,18 @@ In this section, you need to convince the assessor that you have conducted enoug
 
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
 
+The project has been tested carefuly. For each app, in the app's main directiry there are separate files with names: 
+- `test_app.py` - where app name is tested 
+- `test_forms.py` - forms are tested for validation
+- `test_models.py` - where models fields and methods are tested
+- `test_views.py` - where tests for views' templates, POST/GET request and expected display can be found.
+
+Some apps have also other test files, to make sure  content. 
+
+
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+
+
 
 Contact form:
 Go to the "Contact Us" page

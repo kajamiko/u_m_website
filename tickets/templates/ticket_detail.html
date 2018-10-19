@@ -38,6 +38,9 @@
      <th>
      Upvotes
      </th>
+     <th>
+     Author
+     </th>
      </tr>
      
      <tr>
@@ -54,6 +57,9 @@
             <a href="{% url 'cart:add_to_cart' ticket.id %}"><span class="hide-on-med-and-down">Up(add to cart)</span><i class="material-icons black-text">add_shopping_cart</i></a>
             {% endif %}
            {% endif %}
+         </td>
+         <td>
+              {{ ticket.author }}
          </td>
      <tr>
 </table>

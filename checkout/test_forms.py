@@ -12,7 +12,6 @@ class TestOrderForm(TestCase):
           It is working fine with model tests and in live tests as well.
           """
           user = User.objects.create_user('foo', 'myemail@test.com', 'bar')
-          self.client.login(username='foo', password='bar')
           
           test_form = OrderCreateForm({'user': user, 'full_name': 'name', 'phone_number': 'test', 'country': 'test',
                'postcode': 'test', 'town_or_city': 'test', 'street_address1': 'test',

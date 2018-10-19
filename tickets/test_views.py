@@ -77,7 +77,7 @@ class TestViews(TestCase):
 		#page redirecting OK
 		self.assertEqual(page_upvote.status_code, 302)
 		page= self.client.get('/tickets/{0}/'.format(saved_ticket.id))
-		#page returns different __str__, because upvote is working
+		#page returns different __str__, because upvoting is working
 		self.assertNotEqual(page.context['ticket'], saved_ticket.__str__())
 		
 
