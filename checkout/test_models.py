@@ -14,17 +14,12 @@ class TestOrdersModels(TestCase):
                postcode = "FG4 6HN", 
                town_or_city = "Neverland",
                street_address1 = "some street",
-               street_address2 = "SOme building",
                county = "county"
           
           )
           ticket_order = Ticket.objects.create(
                variety = "F",
-               upvotes = 0,
-               author = "SOmeone",
-               status = "to do",
                issue = "ticket0",
-          
           )
           ticket_order1 = Ticket.objects.create(
                variety = "F",

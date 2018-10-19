@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from cart.cart import Cart
 from .models import Order, OrderItem
 from django.contrib import messages
-from .forms import OrderCreateForm, MakePaymentForm
+from .forms import OrderCreateForm
 from django.conf import settings
 from tickets.tickets_upvote import upvote_ticket
 
@@ -18,8 +18,7 @@ def create_order(request):
      total = cart.get_total() * 100
      if request.method=='POST':
           form = OrderCreateForm(request.POST, request.FILES)
-          payment_form = MakePaymentForm(request.POST, request.FILES)
-          if form.is_valid() and payment_form.is_valid():
+          if form.is_valid():
                # a form is saved to a variable    
                order = form.save()
                try:
@@ -68,5 +67,4 @@ def create_order(request):
 
           else:
                form = OrderCreateForm()
-          payment_form = MakePaymentForm()
      return render(request, 'create_order.html', {'form': form, 'total': total, 'stripe_key': stripe_key})
