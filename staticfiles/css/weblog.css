@@ -1,0 +1,32 @@
+.archive-list{
+    list-style-type: none;
+}
+
+.archive-child-list{
+    display: none;
+}
+#boostrap-overrides{
+    font-family: 'Fahkwang', sans-serif;
+}
+#bootstrap-overrides nav{
+    background-color: rgba(98,0,122,0.5);
+}
+#bootstrap-overrides a{
+    
+    color: black;
+}
+#brand_blog{
+	
+	width: 80px;
+}
+#jumbo{
+    
+    height: 400px;
+}
+@media (max-width: 991.98px) { 
+    
+#jumbo{
+
+    height: 200px;
+}
+}
