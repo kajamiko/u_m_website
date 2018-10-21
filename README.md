@@ -78,7 +78,7 @@ In addition, you may also use this section to discuss plans for additional featu
 
 Features Left to Implement
 Another feature idea
-
+I would like to implement better charts to visualise how are tickets processed.
 
 
 ## Technologies Used

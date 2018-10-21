@@ -1,7 +1,8 @@
 from django.views.generic import TemplateView
 from pygal.style import LightSolarizedStyle
+from datetime import date 
 
-from .charts import FPopularityBarChart, BPopularityBarChart
+from .charts import FPopularityBarChart, BPopularityBarChart, ActivityLineChart
 
 
 class StatsView(TemplateView):
@@ -26,8 +27,20 @@ class StatsView(TemplateView):
             y_title='Upvotes',
             explicit_size=False,
         )
+        
+        updates = ActivityLineChart(
+            # x_labels = [datetime.datetime(2018, n, 1) for n in range(1, 13)],
+            
+            x_labels = [
+                        date(2018, 7, 1),
+                        date(2018, 8, 1),
+                        date(2018, 9, 1),
+                        date(2018, 10, 1)
+                ],
+            )
         # Call the `.generate()` method on our chart object
         # and pass it to template context.
         context['f_tickets'] = f_tickets.generate()
         context['b_tickets'] = b_tickets.generate()
+        context['updates'] = updates.generate()
         return context

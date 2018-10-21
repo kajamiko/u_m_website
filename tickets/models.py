@@ -15,13 +15,16 @@ class Ticket(models.Model):
 	date_verified = models.DateField(null=True)
 	date_start_dev = models.DateField(null=True,blank=True)
 	date_done = models.DateField(null=True,  blank=True)
-	date_start_dev = models.DateField(null=True,  blank=True)
 	author = models.CharField(max_length=20, blank=True)
 	verified = models.BooleanField(default=False)
 	status = models.CharField(max_length=6, default='to do')
 	issue = models.CharField(max_length=100, blank=False)
 	description = models.TextField(blank=True)
-
+	
+	def get_updates(self):
+		
+		return [self.date_verified, self.date_start_dev, self.date_done]
+	
 	def __str__(self):
 		return "Ticket #{0}, type: {1}, {2}, {3} upvotes".format(str(self.id), self.variety, self.status, self.upvotes)
 

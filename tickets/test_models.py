@@ -7,7 +7,7 @@ from datetime import date
 class test_tickets(TestCase):
 
 	def test_simplest(self):
-		ticket = Ticket(variety='B', issue='serious issue')
+		ticket = Ticket(variety='B', issue='serious issue', date_verified=date.today(), date_start_dev=date.today(), date_done=date.today())
 		ticket.save()
 		self.assertEqual(ticket.id, 1)
 		self.assertEqual(ticket.variety, 'B')
@@ -16,8 +16,9 @@ class test_tickets(TestCase):
 		self.assertFalse(ticket.verified)
 		self.assertEqual(ticket.status, 'to do')
 		self.assertEqual(ticket.date_created, date.today())
-		self.assertFalse(ticket.date_verified)
+		self.assertTrue(ticket.date_verified)
 		self.assertEqual(ticket.__str__(), "Ticket #{0}, type: {1}, {2}, {3} upvotes".format(str(ticket.id), ticket.variety, ticket.status, ticket.upvotes ))
+		print(ticket.get_updates())
 		
 	def test_comment(self):
 		ticket = Ticket(variety='B', issue='serious issue')
