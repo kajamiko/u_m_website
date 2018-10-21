@@ -128,21 +128,28 @@ Go to the "Contact Us" page
 Try to submit the empty form and verify that an error message about the required fields appears
 Try to submit the form with an invalid email address and verify that a relevant error message appears
 Try to submit the form with all inputs valid and verify that a success message appears.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+For different screen sizes, I designed a sidebar and made sure it's always visible on wide screen, but hidden and available to toggle on smaller screens.
+
+Materialize bug:
+
+When displaying some pages, a jQuery error may appear in the console. I have not designed any jQuery logic on my own, and this is a known Materialize bug.
+
+
+#### Bugs
+
+During testing, I found out that form's automated results are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
-Deployment
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+## Deployment
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
+To deploy the project, I have to find a way to keep static file in place. I created a Amazon S3 bucket for this, and added new configuration variables to the project's settings.py file.
+The database setting has been changed from default Django file to Heroku Postgres Database.
+In development, I have used a separate configuration file to keep sensitive data. These variables are set as Heroku Confog Vars. 
 
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
+Suprisingly, I did not encounter any problems with the code itself during deployment, and I did not set a separate git branch for the purpose. 
+The same code works locally on Cloud9 and on Heroku.
 
 ## Credits
 
