@@ -4,9 +4,9 @@
 
 {% block content %}
 <div class="col s12 l9 tb">
-<h3> Your shopping cart  </h3>
-<h4>  You have   {{ cart|length }} items in your cart. </h4>
-<h5><b> Please notice the minimum donation amount per ticket is £5.</b> </h5>
+<h3> Your cart  </h3>
+<h4>  You have   {{ cart|length }} item(s) in your cart. </h4>
+<h5><b> Please notice the minimum donation amount per ticket is €5.</b> </h5>
                     {% if cart|length %}
                         Your Order Total is:
                              {{ cart.get_total }}
@@ -51,7 +51,7 @@
      <a class="btn btn-lg" href="{% url 'tickets:all_tickets' %}"> Continue browsing </a>
     
                     {% if cart|length > 0 %}
-                    <h5><b> Your Order Total is: £{{ cart.get_total }}</b></h5>
+                    <h5><b> Your Order Total is: €1{{ cart.get_total }}</b></h5>
      <a class="btn btn-lg" href="{% url 'checkout:order_create' %}"> Checkout </a>
      {% endif %}
      

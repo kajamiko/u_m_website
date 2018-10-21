@@ -27,7 +27,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 2. Accounts - users can register and log ino their accounts. They can also keep some details stored in their 'accounts' section, to make checkout easier.
 
-3. Cart - cart is an separate app holding cart logic - users can add, remove or modify their orders as needed.
+3. Cart - cart is an separate app holding cart logic - users can add, remove or modify their selected tickets along with donation amount, as needed.
 
 4. Checkout - the Usos Modern's checkout is made through Stripe. No sensitive payment or credit card details are stored in database, nor are processed by the app itself.
 
@@ -48,9 +48,9 @@ Feature 1 - allows users X to achieve Y, by having them fill out Z
  
 
 2. Accounts (accounts app)
- 1. Registering - users can register by filling the form on the "Register" page. 
- 2. Logging in - to log in, user need to provide his username and password on a "Log in" page.
- 3. Account - users can see their accounts by clicking on "Account" link the top navbar. Here, they can find some details useful when purchasing upvotes and their previous orders.
+ 1. Registering - users can register by filling the form on the "Register" page. There is a link on a navbar, available from every location on the website. 
+ 2. Logging in - to log in, user has to submit his username and password, by filling a form on a "Log in" page.
+ 3. Account - users can see their accounts by clicking on "Account" link the top navbar. Here, they can find some details useful when purchasing upvotes and their previous orders, if any.
  4. Having an account allows users, among others, to comment blog posts and to edit their Issue Tracker comments.
  
 
@@ -106,10 +106,7 @@ Another feature idea
           - instead of designing a blog again, the project is using **w3blog**.
 
 
-Testing
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+## Testing
 
 The project has been tested carefuly. For each app, in the app's main directiry there are separate files with names: 
 - `test_app.py` - where app name is tested 
@@ -120,7 +117,6 @@ The project has been tested carefuly. For each app, in the app's main directiry 
 
 
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
 
 
 Contact form:
@@ -145,6 +141,7 @@ If this section grows too long, you may want to split it off into a separate fil
 ## Deployment
 
 To deploy the project, I have to find a way to keep static file in place. I created a Amazon S3 bucket for this, and added new configuration variables to the project's settings.py file.
+
 The database setting has been changed from default Django file to Heroku Postgres Database.
 In development, I have used a separate configuration file to keep sensitive data. These variables are set as Heroku Confog Vars. 
 
@@ -156,7 +153,7 @@ The same code works locally on Cloud9 and on Heroku.
 ### Code snippets used in Projects
 
 1. Cart
- Cart logic was designed, following the 
+ Cart logic was designed, following the [tutorial](https://blog.muva.tech/lesson-1-building-e-commerce-shopping-cart-using-django-2-0-python-3-6/), however I modified the original code to suit my needs.
 
 
 2. Charts
