@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kajamiko/u_m_website.svg?branch=master)](https://travis-ci.org/kajamiko/u_m_website)
+
 # The Usos Modern website
 
 ## What is Usos Modern?
