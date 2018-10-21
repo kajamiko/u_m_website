@@ -3,7 +3,7 @@ certifi==2018.8.13
 chardet==3.0.4
 coverage==4.5.1
 dj-database-url==0.5.0
-Django==2.0.6
+Django==2.0.9
 django-material==1.2.5
 django-summernote==0.8.10.0
 freeze==1.0.10
@@ -12,7 +12,7 @@ Pillow==5.2.0
 psycopg2==2.7.5
 pygal==2.4.0
 python-dateutil==2.7.3
-pytz==2018.4
+pytz==2018.5
 requests==2.19.1
 six==1.11.0
 stripe==2.4.0
