@@ -14,9 +14,11 @@
             <ul class="slides">
                 <li>
                     <img src="{% static '/images/homepage/accomplishment-celebrate.jpg' %}">
-                    <div class="caption center-align">
-                        <h3>Usos Modern</h3>
+                    <div class="caption center-align ">
+                        <div>
+                        <h3 >Usos Modern</h3>
                         <h5 class="light grey-text text-lighten-3">And now you can relax.</h5>
+                        </div>
                     </div>
                 </li>
                 
@@ -24,7 +26,7 @@
                     <img src="{% static '/images/homepage/accomplishment-celebrate.jpg' %}">
                     <div class="caption center-align">
                         <h3>Support us!</h3>
-                        <h5 class="light grey-text text-lighten-3">To support your favourite app and help it grow, please read the <a>Our Promise</a> section first, and then check out our <a href="{% url 'tickets:all_tickets' %}">Issue Tracker</a>!</h5>
+                        <h5 class="light grey-text text-lighten-3">To support your favourite app and help it grow, please read the <a class="grey-text text-lighten-3" href="{% url 'home:promise' %}">Our Promise</a> section first, and then check out our <a class="grey-text text-lighten-3" href="{% url 'tickets:all_tickets' %}">Issue Tracker</a>!</h5>
                     </div>
                 </li>
 
@@ -33,15 +35,15 @@
                     <div style="color: red;" class="caption center-align">
                         <h3>And if you wish to work in great team</h3>
                         <h5 class="light grey-text text-lighten-3">To help others do the same, just</h5>
-                        <a>Click here!</a>
+                        <a href="{% url 'home:developers_section' %}">Click here!</a>
                     </div>
                 </li>
                 <li>
                     <img src="{% static '/images/homepage/advice-advise-advisor-7097.jpg' %}">
                     <div style="color: black;" class="caption center-align">
                         <h3>Check how we did</h3>
-                        <h5 class="light grey-text text-lighten-3">This week, month, year...</h5>
-                        <a>Check out our stats!</a>
+                        <h5 >This week, month, year...</h5>
+                        <a class="">Check out our stats!</a>
                     </div>
                 </li>
             </ul>
@@ -54,7 +56,6 @@
         <!-- Compiled and minified JavaScript -->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>-->
 
-        <!--Materializecss Slider-->
         <script>
             $(document).ready(function () {
                 $('.slider').slider({full_width: true});
