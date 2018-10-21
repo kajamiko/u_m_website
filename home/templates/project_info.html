@@ -4,9 +4,11 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static '/css/project.css' %}">
-<div class="col s12 l9 tb">
+<div class="col s12 l9">
      <h3>Welcome to Usos Modern&trade; project page</h3>
 <a href="https://play.google.com/store"><img class="os-links" src="{% static '/images/homepage/ios-image.png' %}"></a> <a href="https://www.apple.com/uk/ios/app-store/"><img class="os-links" src="{% static '/images/homepage/android-image.png' %}"></a>
+</div>
+<div class="col s12 l9 tb">
 
 <div id="info" class="col s12 m8 l8">
      <h5>Here you can find all the useful links and information.</h5>
@@ -25,7 +27,7 @@
 </ul>
   </div>
   </div>
-  <div class="section center-align">
+  <div class="col s12 l9 center-align">
   <a class="waves-effect waves-light btn"><i class="material-icons left">settings</i>For developers</a>
   </div>
 {% endblock %}
