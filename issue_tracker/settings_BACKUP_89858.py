@@ -16,6 +16,11 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+<<<<<<< HEAD
+=======
+# heroku required
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+>>>>>>> 94dbe365e0e2e467cf011bde0475904da4a77d17
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -48,6 +53,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'weblog',
     'pygal',
+    'storages'
 
 ]
 
@@ -137,7 +143,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'CacheControl': 'max-age=86400',
@@ -162,6 +167,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     )
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STRIPE_PUBLISHABLE=os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET=os.getenv('STRIPE_SECRET_KEY')
