@@ -7,6 +7,7 @@ Django==2.0.9
 django-material==1.2.5
 django-summernote==0.8.10.0
 freeze==1.0.10
+gunicorn==19.9.0
 idna==2.7
 Pillow==5.2.0
 psycopg2==2.7.5
@@ -18,3 +19,4 @@ six==1.11.0
 stripe==2.4.0
 urllib3==1.23
 w3blog==0.5.1
+whitenoise==2.0.6
