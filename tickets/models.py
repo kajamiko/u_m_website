@@ -6,6 +6,11 @@ TICKET_VARIETIES_CHOICES=(
 	('B', 'Bug'),
 	('F', 'Feature')
 	)
+TICKET_STATUS_CHOICES = (
+	('to do', 'To do'),
+	('doing', 'Doing'),
+	('done', 'Done')
+	)
 
 class Ticket(models.Model):
 	variety = models.CharField(max_length=7, choices=TICKET_VARIETIES_CHOICES, blank=False)
@@ -17,7 +22,7 @@ class Ticket(models.Model):
 	date_done = models.DateField(null=True,  blank=True)
 	author = models.CharField(max_length=20, blank=True)
 	verified = models.BooleanField(default=False)
-	status = models.CharField(max_length=6, default='to do')
+	status = models.CharField(max_length=6, choices=TICKET_STATUS_CHOICES, default='to do')
 	issue = models.CharField(max_length=100, blank=False)
 	description = models.TextField(blank=True)
 	

@@ -49,8 +49,7 @@ class BPopularityBarChart():
     def generate(self):
         # Get chart data
         chart_data = self.get_data()
-        # chart_data = OrderedDict(chart_data)
-        # Add data to chart
+        
         for key, value in chart_data.items():
             self.chart.add(key, value)
         
@@ -74,7 +73,7 @@ class ActivityLineChart():
             name = ticket.issue + " " + ticket.variety
             data[ticket.issue] = (ticket.get_updates())
             
-        return OrderedDict(data)
+        return data
 
     def generate(self):
         # Get chart data

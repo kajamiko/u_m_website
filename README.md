@@ -31,37 +31,36 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 4. Checkout - the Usos Modern's checkout is made through Stripe. No sensitive payment or credit card details are stored in database, nor are processed by the app itself.
 
-5. Tickets - it is where all the issue tracker logic is stored. Tickets can be created by logged in users. They can also be upvoted or donated and - last but not least - commented.
+5. Issue tracker - it is where all the issue tracker logic is stored. Tickets can be created by logged in users. They can also be upvoted or donated and - last but not least - commented.
 
 6. Blog - users cannot add posts, but register users can add comments.
 
 
 ## Existing Features
-Feature 1 - allows users X to achieve Y, by having them fill out Z
-...
 
-1. Home (home app)
+
+1. Home ('home' app)
  1. Homepage - good looking homepage with a carousel, gives users a chance to get familiar with navigation, which is similar across the whole site. There is a top navbar with a logo and account navigation links. There is also a side navigation list, with links to info pages, as informatin is what user may want to know first.
  2. About UM App - App's FAQ, links to Google Play and Apple Stores, as it would be on a real project's website.
  3. Our Promise - developer's business plan described and some useful information about the Issue Tracker.
  4. Statistics - contains charts summarising Issue Tracker.
  
 
-2. Accounts (accounts app)
+2. Accounts ('accounts' app)
  1. Registering - users can register by filling the form on the "Register" page. There is a link on a navbar, available from every location on the website. 
  2. Logging in - to log in, user has to submit his username and password, by filling a form on a "Log in" page.
  3. Account - users can see their accounts by clicking on "Account" link the top navbar. Here, they can find some details useful when purchasing upvotes and their previous orders, if any.
  4. Having an account allows users, among others, to comment blog posts and to edit their Issue Tracker comments.
  
 
-3. Cart (cart app)
+3. Cart ('cart' app)
   1. Users can add a ticket to the cart, by clicking 'Up(add to cart)' link on the "ticket details" page. The number of items displayed on a cart icon in a top right corner will increase. By default, the ticket's donatino is £5, but it can be easily updated.
   2. User can see his cart's content by clicking on the cart icon in the top right corner (on the navbar). This will redirect to 'cart detail page'.
   3. While on ''cart detail page', user can update ticket's donation. To do so, user can choose amount from the choice field and click 'Set donation'. Page will refresh and the new amount can be seen next to the ticket's title.
   4. From this point, user can either click 'Continue browsing' to see other tickets, or go to checkout by clicking 'Checkout' button.
   5. To complete the order, user should fill the order form, and then click 'Pay with card' button. After the payment is accepted, order is completed. The tickets paid are upvoted now.
  
-3. Checkout
+3. Checkout ('checkout' app)
    1. To go to checkout, user should first click the icon cart, and then click 'Go to checkout' button on the cart view.
    1. To complete the order, user should fill the order form, and then click 'Pay with card' button. After the payment is accepted, order is completed. The tickets paid are upvoted now.
    2. User can see transaction summary soon after it is completed. The order details will be displayed after the page is refreshed.
@@ -69,16 +68,17 @@ Feature 1 - allows users X to achieve Y, by having them fill out Z
 
 4. Issue Tracker ('tickets' app) 
    1. All users can browse the tickets and comment them. 
-   2. Only registered users can add tickets 
+   2. Only registered users can add tickets. Tickets can be modified only by admins.
+   3. All users can comment, but only registered users can upvote 'Bug' tickets and modify their previous comments.
+   4. All users can donate to 'Feature' tickets, but only registered users can track on their previous orders.
 
+5. Blog ('w3blog' app)
+   1. All users can see posts.
+   2. Only registered users can comment.
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+### Features Left to Implement
 
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
-Features Left to Implement
-Another feature idea
-I would like to implement better charts to visualise how are tickets processed.
+I would like to implement methods to make chart responsive.
 
 
 ## Technologies Used
@@ -97,13 +97,17 @@ I would like to implement better charts to visualise how are tickets processed.
 - [Django](https://www.djangoproject.com/)
     - project was built using **Django** framework.
     Following Django packages was used to build the project:
-     1. [arrow](https://pypi.org/project/arrow/) - for better datetime processing, as it is a great time saver when it gets to querying database
-     2. [django-material](http://forms.viewflow.io/) - django support for materialize
-     3. [django-summernote](https://pypi.org/project/django-summernote/) - requirement for w3blog
-     4. [pygal](http://pygal.org/en/stable/) - used for plotting beatiful charts 
-     5. [stripe](https://stripe.com/) - online payments handling
-     6. [w3blog](https://pypi.org/project/w3blog/)
+     1. [django-material](http://forms.viewflow.io/) - django support for materialize
+     2. [django-summernote](https://pypi.org/project/django-summernote/) - requirement for w3blog
+     3. [pygal](http://pygal.org/en/stable/) - used for plotting beatiful charts 
+     4. [stripe](https://stripe.com/) 
+        - online payments handling
+     5. [w3blog](https://pypi.org/project/w3blog/)
           - instead of designing a blog again, the project is using **w3blog**.
+     6. [boto3](https://readthedocs.org/projects/boto3) and [django-storages](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)
+         - Boto3 to connect to Amazon SDK and django-storages to store files away form Heroku.
+     7.[dj-database-url](https://pypi.org/project/dj-database-url/)
+         - used to connect to Heroku's Postrgres DB
 
 
 ## Testing
