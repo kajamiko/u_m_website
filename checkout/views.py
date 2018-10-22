@@ -13,7 +13,6 @@ stripe.api_key = settings.STRIPE_SECRET
 def create_order(request):
 
      stripe_key= settings.STRIPE_PUBLISHABLE
-     
      cart = Cart(request)
      total = cart.get_total() * 100
      if request.method=='POST':
@@ -21,11 +20,12 @@ def create_order(request):
           if form.is_valid():
                # a form is saved to a variable    
                order = form.save()
+               
                try:
                     customer = stripe.Charge.create(
                          amount = total,
                          currency = 'GBP',
-                         description = request.user.email,
+                         description = str(order.id),
                          source=request.POST['stripeToken'],
                          )
                     
@@ -67,4 +67,5 @@ def create_order(request):
 
           else:
                form = OrderCreateForm()
+               
      return render(request, 'create_order.html', {'form': form, 'total': total, 'stripe_key': stripe_key})

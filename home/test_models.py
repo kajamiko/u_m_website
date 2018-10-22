@@ -9,6 +9,9 @@ class TestCharts(TestCase):
      A class design to test passing data to a chart
      """
      def test_ActivityChartdata(self):
+          """
+          Tests updates chart data
+          """
           ticket0 = Ticket(variety='B', issue='ticket0', verified = True, 
           date_verified=datetime.date.today(), date_start_dev=datetime.date.today())
           ticket0.save()
@@ -37,6 +40,9 @@ class TestCharts(TestCase):
           })
           
      def test_bar_charts(self):
+          """
+          Tests popularity charts data
+          """
           ticket0 = Ticket(variety='B', issue='ticket0', verified = True, 
           date_verified=datetime.date.today(), date_start_dev=datetime.date.today())
           ticket0.save()
@@ -44,16 +50,20 @@ class TestCharts(TestCase):
                variety = "F",
                issue = "ticket1",
                verified = True,
-               date_verified=datetime.date.today(),
-               date_start_dev=datetime.date.today(),
-                date_done=datetime.date.today()
+               upvotes=10
           )
           ticket2 = Ticket.objects.create(
                variety='B', 
                issue='ticket2',
-               verified = True,
-               date_verified=datetime.date.today()
+               upvotes=5
                )
-              
+          ticket3 = Ticket.objects.create(
+               variety='F', 
+               issue='ticket3',
+               upvotes=80
+               )
           f_chart = FPopularityBarChart()
           b_chart = BPopularityBarChart()
+          
+          assert(f_chart.get_data()=={'ticket1': 10, 'ticket3': 80})
+          assert(b_chart.get_data()=={'ticket2': 5, 'ticket0': 0})

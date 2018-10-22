@@ -11,8 +11,6 @@ class StatsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(StatsView, self).get_context_data(**kwargs)
 
-        # Instantiate our chart. We'll keep the size/style/etc.
-        # config here in the view instead of `charts.py`.
         f_tickets = FPopularityBarChart(
 
             x_title='feature ID',
@@ -29,7 +27,6 @@ class StatsView(TemplateView):
         )
         
         updates = ActivityLineChart(
-            # x_labels = [datetime.datetime(2018, n, 1) for n in range(1, 13)],
             
             x_labels = [
                         date(2018, 7, 1),

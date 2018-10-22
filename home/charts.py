@@ -1,4 +1,4 @@
-from collections import OrderedDict
+
 import pygal
 from tickets.models import Ticket
 from datetime import date
@@ -16,9 +16,9 @@ class FPopularityBarChart():
         Query the db for chart data, pack them into a dict and return it.
         '''
         data = {}
-        for ticket in Ticket.objects.all().filter(variety__exact="F").order_by('upvotes'):
+        for ticket in Ticket.objects.all().filter(variety__exact="F").order_by('upvotes')[:8]:
             data[ticket.issue] = ticket.upvotes
-        return OrderedDict(data)
+        return data
 
     def generate(self):
         # Get chart data
@@ -42,9 +42,9 @@ class BPopularityBarChart():
         Query the db for chart data, pack them into a dict and return it.
         '''
         data = {}
-        for ticket in Ticket.objects.all().filter(variety__exact="B").order_by('upvotes'):
+        for ticket in Ticket.objects.all().filter(variety__exact="B").order_by('upvotes')[:8]:
             data[ticket.issue] = ticket.upvotes
-        return OrderedDict(data)
+        return data
 
     def generate(self):
         # Get chart data
@@ -69,16 +69,18 @@ class ActivityLineChart():
         Query the db for chart data, pack them into a dict and return it.
         '''
         data = {}
-        for ticket in Ticket.objects.all().filter(verified__exact=True).order_by('upvotes')[:4]:
+        for ticket in Ticket.objects.all().filter(verified__exact=True).order_by('upvotes')[:8]:
             name = ticket.issue + " " + ticket.variety
             data[ticket.issue] = (ticket.get_updates())
             
         return data
 
     def generate(self):
+        """
+        Passes datetime data to the chart, along with a int value to render
+        """
         # Get chart data
         chart_data = self.get_data()
-
        
         for key, value in chart_data.items():
             # value[0], value[1], value[2]

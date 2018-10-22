@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 
-class TestViews(TestCase):
+class TestTicketViews(TestCase):
 	
 	def test_ticket_all(self):
 		"""

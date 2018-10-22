@@ -1,27 +1,42 @@
 from django.test import TestCase
+from django.test import Client
+from django.shortcuts import reverse
 from tickets.models import Ticket
-from datetime import date
+import datetime
 
-from .charts import FPopularityBarChart, BPopularityBarChart, ActivityLineChart
 
-class TestCharts(TestCase):
-     """
-     A class design to test passing data to 
-     """
-     def test_data(self):
-          ticket = Ticket(variety='B', issue='ticket0', date_verified=date.today(), date_start_dev=date.today())
-          ticket.save()
+
+class TestViews(TestCase):
+     
+          
+     def setUp(self):
+          self.client = Client()
+          
+     def test_homepage(self):
+          response = self.client.get(reverse('home:homepage'))
+          self.assertEqual(response.status_code, 200)
+          # self.assertIn('Your cart is empty', str(response.content))
+          
+     def test_project_info_page(self):
+          response = self.client.get(reverse('home:project_info'))
+          self.assertEqual(response.status_code, 200)
+          
+     def test_stats_page(self):
+          """
+          Testing statistics page.
+          I have created a ticket object to pass, because pygal.DateLine object throws
+          an AttributeError error if no data is passed.
+          """
           ticket2 = Ticket.objects.create(
-               variety = "F",
-               issue = "ticket1",
-               date_verified=date.today(),
-               date_start_dev=date.today(),
-                date_done=date.today()
-          )
-          ticket3 = Ticket.object.create(
                variety='B', 
-               issue='ticket3',
-               date_verified=date.today()
+               issue='ticket2',
+               verified = True,
+               date_verified=datetime.date.today()
                )
-          chart = ActivityLineChart()
-          print(chart.get_data())
+              
+          response = self.client.get(reverse('home:stats'))
+          self.assertEqual(response.status_code, 200)
+          
+     def test_promise(self):
+          response = self.client.get(reverse('home:promise'))
+          self.assertEqual(response.status_code, 200)

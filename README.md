@@ -140,6 +140,8 @@ When displaying some pages, a jQuery error may appear in the console. I have not
 
 During testing, I found out that form's automated results are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
 
+Another thing is a problem with pygal.DateLine object, when there is no data passed. It throws an error
+
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
 ## Deployment
