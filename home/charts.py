@@ -77,7 +77,7 @@ class ActivityLineChart():
 
     def generate(self):
         """
-        Passes datetime data to the chart, along with a int value to render
+        Passes datetime data to the chart, along with a int value
         """
         # Get chart data
         chart_data = self.get_data()

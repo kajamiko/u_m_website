@@ -44,7 +44,7 @@ class TestCheckoutView(TestCase):
                )
           ticket = Ticket(variety='F', issue='some feature')
           ticket.save() 
-          self.client.get(reverse('cart:add_to_cart', args=(ticket.id,)))
+          self.client.get(reverse('cart:add_to_ckart', args=(ticket.id,)))
           session = self.client.session
           data= {'full_name': 'test', 'phone_number': 'test', 'country': 'test', 'postcode': 'test',
           'town_or_city': 'test', 'street_address1': 'test', 'county': 'test', 'stripeToken': token.id}

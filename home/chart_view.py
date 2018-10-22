@@ -39,5 +39,8 @@ class StatsView(TemplateView):
         # and pass it to template context.
         context['f_tickets'] = f_tickets.generate()
         context['b_tickets'] = b_tickets.generate()
-        context['updates'] = updates.generate()
+        try:
+            context['updates'] = updates.generate()
+        except AttributeError:
+            pass
         return context
