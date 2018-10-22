@@ -5,3 +5,4 @@ c.9/
 *.pyc
 *.pyo
 env.py
+htmlcov/

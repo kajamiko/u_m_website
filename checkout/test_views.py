@@ -49,6 +49,6 @@ class TestCheckoutView(TestCase):
           data= {'full_name': 'test', 'phone_number': 'test', 'country': 'test', 'postcode': 'test',
           'town_or_city': 'test', 'street_address1': 'test', 'county': 'test', 'stripeToken': token.id}
           response = self.client.get(reverse('checkout:order_create'))
-          success, transaction visible on my stripe account
-          self.client.post(reverse('checkout:order_create'), data=data)
+          # success, transaction visible on my stripe account
+          # self.client.post(reverse('checkout:order_create'), data=data)
           
