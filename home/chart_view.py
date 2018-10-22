@@ -1,5 +1,4 @@
 from django.views.generic import TemplateView
-from pygal.style import LightSolarizedStyle
 from datetime import date 
 
 from .charts import FPopularityBarChart, BPopularityBarChart, ActivityLineChart
@@ -15,8 +14,7 @@ class StatsView(TemplateView):
 
             x_title='feature ID',
             y_title='Upvotes',
-            explicit_size=False,
-            style=LightSolarizedStyle,
+            explicit_size=False
         )
         
         b_tickets = BPopularityBarChart(

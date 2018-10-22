@@ -3,8 +3,8 @@
 {% block title_block %} UM statistics {% endblock %}
 
 {% block content %}
-<div class="col s12 l6 offset-l1 tb">
-  
+<div class="col s12 l8 tb">
+  <div class="col s12 l10 offset-l1">
   <div>
     <h3>Check out the most popular topics we're working on!</h3>
     
@@ -21,12 +21,13 @@
   <div>
     {{ b_tickets|safe }}
   </div>
-  <h5>How are we dealig with them?</h5>
+  <h5>How are we dealing with them?</h5>
     <div>
     {{ updates|safe }}
   </div>
-  <p></p>
+  <p>Here you can find some of our updated tickets' results. Left 'arm'each 'V' is the time from when the ticket was verified (the bottom dot is the verification date) until we started development. The right 'arm' is time it took for development. The wider the 'V' is, the more time we needed find a solution!</p>
 </div>
-  <!--<script type="text/javascript" src="http://kozea.github.com/pygal.js/latest/pygal-tooltips.min.js"></script>  -->
+</div>
+
 
 {% endblock %}
