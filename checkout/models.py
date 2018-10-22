@@ -45,7 +45,7 @@ class OrderItem(models.Model):
     donation = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
-        return 'order id is {0}, ticket is {1} - {2}'.format(self.order.id, self.ticket.id, self.ticket.issue)
+        return "order id is {0}, ticket's id is {1} - {2}".format(self.order.id, self.ticket.id, self.ticket.issue)
         
     def get_cost(self):
         return self.donation
