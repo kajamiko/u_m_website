@@ -47,6 +47,10 @@ body{
      min-height: 100vh;
      flex-direction: column;
 }
+#large-font{
+	font-size: 2em;
+	
+}
 #info{
      overflow-y: scroll;
      height: 500px;

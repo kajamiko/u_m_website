@@ -22,12 +22,17 @@
     {{ b_tickets|safe }}
   </div>
   <h5>How are we dealing with them?</h5>
-    <div>
-    {{ updates|safe }}
   </div>
-  <p>Here you can find some of our updated tickets' results. Left 'arm'each 'V' is the time from when the ticket was verified (the bottom dot is the verification date) until we started development. The right 'arm' is time it took for development. The wider the 'V' is, the more time we needed find a solution!</p>
+  
+    <div class="col s12 l10 offset-l1">
+        <p id="large-font">Here you can find some of our updated tickets' results. Left 'arm' of each 'V' is the time from when the ticket was verified (the bottom dot is the verification date) until we started development. The right 'arm' is time it took for development. The wider the 'V' is, the more time we needed find a solution!</p>
+        
+    {{ updates|safe }}
+ 
+
+   </div>
 </div>
-</div>
+
 
 
 {% endblock %}

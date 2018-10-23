@@ -152,8 +152,9 @@ In development, I have used a separate configuration file to keep sensitive data
 Suprisingly, I did not encounter any problems with the code itself during deployment.
 
 
-However, I created a separeate branch for Heroku deployment. The only difference from the master branch is the `date_created.editable = True` line in tickets/models.py. It allowed me to add tickets with various `created_date` field in Heroku's database, for demonstration purposes.
+However, I created a separeate branch that I used temporarily for Heroku deployment. The only difference from the master branch is the `date_created.editable = True` line in tickets/models.py. It allowed me to add tickets with various `date_created ` field in Heroku's database, for demonstration purposes.
 
+Later on, I've changed Heroku deployed branch back to master, without the the date hack.
 
 ## Credits
 
