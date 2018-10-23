@@ -49,7 +49,6 @@ def order_pay(request, order_id):
      cart = Cart(request)
      total = cart.get_total() * 100
      order = get_object_or_404(Order, pk=order_id)
-     
      if request.method=='POST':
           
           try:
@@ -62,7 +61,7 @@ def order_pay(request, order_id):
           except stripe.error.CardError:
                messages.error(request, "Your card was declined")
                
-          if customer:
+          if customer.paid:
                messages.error(request, "You have succesfully paid")
                for item in cart:
                     OrderItem.objects.create(
@@ -81,7 +80,7 @@ def order_pay(request, order_id):
      return render(request, 'order_pay.html', {'order': order, 'total': total, 'stripe_key': stripe_key})
 
 def cancel_order(request, order_id):
-     order = get_object_or_404(Order, pk=order_id)
+     order = Order.objects.get(pk=order_id)
      order.delete()
      return redirect('cart:cart_detail')
      
