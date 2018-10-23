@@ -37,6 +37,10 @@ class TestViews(TestCase):
           response = self.client.get(reverse('home:stats'))
           self.assertEqual(response.status_code, 200)
           
+     def test_stats_for_error(self):
+          response = self.client.get(reverse('home:stats'))
+          self.assertEqual(response.status_code, 200)
+          
      def test_promise(self):
           response = self.client.get(reverse('home:promise'))
           self.assertEqual(response.status_code, 200)

@@ -20,7 +20,7 @@ def create_order(request):
           if form.is_valid():
                # a form is saved to a variable    
                order = form.save()
-               
+          
                try:
                     customer = stripe.Charge.create(
                          amount = total,
@@ -28,11 +28,12 @@ def create_order(request):
                          description = str(order.id),
                          source=request.POST['stripeToken'],
                          )
-                    
+
                except stripe.error.CardError:
                     messages.error(request, "Your card was declined")
                 
                if customer:
+
                     messages.error(request, "You have succesfully paid")
                
                     for item in cart:
@@ -49,6 +50,9 @@ def create_order(request):
                     return render(request, 'created.html', {'order': order, 'items': items})
                else:
                     messages.error(request, "Unable to take payment")
+          else:
+          
+               messages.error(request, "Some of your details are incorrect!")
      else:
           if request.user.is_authenticated:
                prof = request.user.profile

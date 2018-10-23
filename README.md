@@ -131,11 +131,12 @@ The project has been tested carefuly. For each app, in the  main directory there
 
 For different screen sizes, I designed a sidebar and made sure it's always visible on wide screen, but hidden and available to toggle on smaller screens.
 
+
 For app's test version,  the 'Ticket' model is slightly altered: there is `date_created.editable = True` line, which I left commented in the deployed master branch. It allowed me to create Ticket objects with past create dates for testing. Obviously it is not needed in production.
 
 #### Bugs
 
-1. During testing, I found out that form's automated tests are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
+1. During testing, I found out that form's automated tests are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). I had also experienced problem with form testing in accounts app.  In all cases, forms seem to work when testing views and in live tests.
 
 2. Another thing is a problem with pygal.DateLine object, as it throws an error when the database is empty. In the end I decided to catch the error and not to render the chart at all if the database is empty.  
 3. Materialize bug:
@@ -146,7 +147,7 @@ When displaying some pages, a jQuery error may appear in the console. I have not
 
 To deploy the project, I have to find a way to keep static file in place. I created a Amazon S3 bucket for this, and added new configuration variables to the project's settings.py file.
 
-The database setting has been changed from default Django file to Heroku Postgres Database.
+The database setting has been changed from default Django file to Heroku Postgres Database. I also populated it with some sample data.
 In development, I have used a separate configuration file to keep sensitive data. These variables are set as Heroku Confog Vars. 
 
 Suprisingly, I did not encounter any problems with the code itself during deployment.
