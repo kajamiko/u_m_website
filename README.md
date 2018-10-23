@@ -191,8 +191,9 @@ Later on, I've changed Heroku deployed branch back to master, without the the da
 
 
 ## Content
+Most of the 'For developers' page was copied from [Indeed.com](https://www.indeed.com).
 
-In most cases, project uses Materialize icons. W3blog app uses Bootstrap icons. Project is using [Fontawesome](https://fontawesome.com/) in some cases, e.g. cart icon, as it was easier to implement a badge with content items number.
+In most cases,the project uses Materialize icons. W3blog app uses Bootstrap icons. Project is using [Fontawesome](https://fontawesome.com/) in some cases, e.g. cart icon, as it was easier to implement a badge with content items number.
 
 ## Media
 The photos used in this site were obtained from [Pixabay](https://pixabay.com) and some from [Unsplash](https://unsplash.com/).
