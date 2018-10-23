@@ -40,7 +40,7 @@ class TestOrdersModels(TestCase):
                order=order_test,
                ticket=ticket_order1,
                donation=15) 
-          self.assertEqual('order id is 1, ticket is 1 - ticket0', str(order_item))
+          self.assertEqual("order id is 1, ticket's id is 1 - ticket0", str(order_item))
           self.assertEqual(str(order_test), 'Order #1, for 2 item(s), total cost of 20.00.')
           self.assertEqual(['ticket0', 'ticket1'],order_test.return_items())
   

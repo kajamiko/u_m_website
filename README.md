@@ -11,16 +11,26 @@ Usos Modern website is a project run by USOS Modern App's developers, to help ma
 
 
 
-UX
+## UX
 
 The project's goal is to provide an efficiently working issue tracker for a mobile app.
-TO achieve it, I ha
+To achieve it, I designed a system that allows users to report issues and suggest new features. They can comment and upvote, and donate features they would like to see in the app.
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
+## User Stories
 
-As a user type, I want to perform an action, so that I can achieve a goal.
+- As a user, I would like to affect the way app is developed, by donating particular features I would like to see working in the future.
 
-Mockups for the project are ava
+- As a user donating, I would like to see my past orders in one place.
+
+- As a registered user, I want to have the ability to modify my comments.
+
+- As an app's user, I would like to see how do donations affect development process.
+
+
+### Mockups
+
+Mockups for the project are stored in 'usos_modern_mockups/' folder.
+
 ## Features
 
 1. Home - on this part of the project, users can find all informations about the website and app that the website is created for, including statistics.
@@ -107,12 +117,12 @@ I would like to implement methods to make chart responsive.
      6. [boto3](https://readthedocs.org/projects/boto3) and [django-storages](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)
          - Boto3 to connect to Amazon SDK and django-storages to store files away form Heroku.
      7.[dj-database-url](https://pypi.org/project/dj-database-url/)
-         - used to connect to Heroku's Postrgres DB
+         - used to connect to Heroku's Postgres DB
 
 
 ## Testing
 
-The project has been tested carefuly. For each app, in the app's main directiry there are separate files with names: 
+The project has been tested carefuly. For each app, in the  main directory there are separate files with names: 
 - `test_app.py` - where app name is tested 
 - `test_forms.py` - forms are tested for validation
 - `test_models.py` - where models fields and methods are tested
@@ -121,18 +131,16 @@ The project has been tested carefuly. For each app, in the app's main directiry 
 
 For different screen sizes, I designed a sidebar and made sure it's always visible on wide screen, but hidden and available to toggle on smaller screens.
 
-Materialize bug:
-
-When displaying some pages, a jQuery error may appear in the console. I have not designed any jQuery logic on my own, and this is a known Materialize bug.
-
+For app's test version,  the 'Ticket' model is slightly altered: there is `date_created.editable = True` line, which I left commented in the deployed master branch. It allowed me to create Ticket objects with past create dates for testing. Obviously it is not needed in production.
 
 #### Bugs
 
-During testing, I found out that form's automated results are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
+1. During testing, I found out that form's automated tests are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
 
-Another thing is a problem with pygal.DateLine object, as it throws an error when the database is empty. In the end I decided to catch the error and not to render the chart at all if the database is empty.  
+2. Another thing is a problem with pygal.DateLine object, as it throws an error when the database is empty. In the end I decided to catch the error and not to render the chart at all if the database is empty.  
+3. Materialize bug:
+When displaying some pages, a jQuery error may appear in the console. I have not designed any jQuery logic on my own, and this is a known Materialize bug.
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
 ## Deployment
 
@@ -146,7 +154,7 @@ The same code works locally on Cloud9 and on Heroku.
 
 ## Credits
 
-### Code snippets used in Projects
+### Code snippets used in Project
 
 1. Cart
  Cart logic was designed, following the [tutorial](https://blog.muva.tech/lesson-1-building-e-commerce-shopping-cart-using-django-2-0-python-3-6/), however I modified the original code to suit my needs.

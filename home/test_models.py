@@ -33,9 +33,9 @@ class TestCharts(TestCase):
           chart = ActivityLineChart()
           
           assert(chart.get_data() == 
-          {'ticket0': [datetime.date(2018, 10, 22), datetime.date(2018, 10, 22), None], 
-          'ticket2': [datetime.date(2018, 10, 22), None, None], 
-          'ticket1': [datetime.date(2018, 10, 22), datetime.date(2018, 10, 22), datetime.date(2018, 10, 22)]
+          {'ticket0': [datetime.date.today(), datetime.date.today(), None], 
+          'ticket2': [datetime.date.today(), None, None], 
+          'ticket1': [datetime.date.today(), datetime.date.today(), datetime.date.today()]
                
           })
           
