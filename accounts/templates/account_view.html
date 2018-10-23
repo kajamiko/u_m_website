@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-    {% block title %}
-    Your account
-    {% endblock %}
+{% block title_block %}Your account {% endblock %}
 {% block content %}
 Username: {{ user.username }}
 Email: {{ user.email }}

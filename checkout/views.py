@@ -11,7 +11,9 @@ from tickets.tickets_upvote import upvote_ticket
 stripe.api_key = settings.STRIPE_SECRET
 
 def create_order(request):
-
+     """
+     VIew creating orders.
+     """
      cart = Cart(request)
      total = cart.get_total() * 100
      if request.method=='POST':

@@ -89,6 +89,7 @@ Mockups for the project are stored in 'usos_modern_mockups/' folder.
 ### Features Left to Implement
 
 I would like to implement methods to make chart responsive.
+Another idea is to make canceling orders or paying later orders, possible form user's account.
 
 
 ## Technologies Used
@@ -132,6 +133,26 @@ The project has been tested carefuly. For each app, in the  main directory there
 For different screen sizes, I designed a sidebar and made sure it's always visible on wide screen, but hidden and available to toggle on smaller screens.
 
 For app's test version,  the 'Ticket' model is slightly altered: there is `date_created.editable = True` line, which I left commented in the deployed branch. It allowed me to create Ticket objects with past create dates for testing. Obviously it is not needed in production.
+
+### Manual testing 
+
+'Checkout' app is not 100% tested automatically. It seems that there is some problem with Stripe.error, because it used to break my tests, as it it is never thrown. However, it works well in live tests.
+
+To test declined cards, please check manually:
+
+1. Add some features to cart.
+2. Continue to checkout, fill the order form and submit it. Verify, that almost all the fields are required.
+3. Click "Pay with card" and to test working stripe errors. Here are some card numbers:
+     - 4000000000009995 for 'insufficient funds' code
+     - 4000000000009987 for 'card declined' code
+
+Also, checkout as a logged in user does not work well in automated tests. It does work in live tests.
+
+To test it manually:
+
+1. Please register an account an make sure you log in.
+2. Add some features to cart and head to checkout.
+3. Pay with test card number '4242424242424242' and verify, that order has been created. It is now visible in 'Your account' section.
 
 #### Bugs
 
