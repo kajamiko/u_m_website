@@ -1,0 +1,88 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title_block %} Payment {% endblock %}
+{% block content %}
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<div class="col s12 l9 tb">
+<h4>Please complete Payment</h4>
+<div class="col l8 ">
+          
+<table>
+     <thead>
+          <tr><th><h4>Your tickets:</h4></th></tr>
+           <tr>  
+                <th>Issue</th>
+               <th>Ticket ID</th>
+               <th>Chosen donation</th>
+          </tr>
+     </thead>
+     <tbody>
+          {% for item in cart %}
+               {% with item.ticket as ticket %}
+          <tr>
+               <td>{{ ticket.issue }}</td><td>#{{ ticket.id }}</td><td> £{{ item.donation }}</td>
+               </tr>
+               {% endwith %}
+          {% endfor %}
+          <tr><td><h6><b>Your Order Total is: GBP {{ cart.get_total }}</b></h6></td></tr>
+
+    </table> 
+    
+    
+    <table>
+     <thead>          
+     <tr>
+          <th><h4>Your order details</h4></th></tr>
+           <tr>  
+                <td>Full name</td> <td>{{ order.full_name }}</td>
+          </tr>
+          <tr>  
+                <td>Phone number </td> <td>{{ order.phone_number }}</td>
+          </tr>
+          
+          <tr>  
+                <td>Country</td> <td>{{ order.country }}</td>
+          </tr>
+          
+          <tr>  
+                <td>Town or city</td> <td>{{ order.town_or_city }}</td>
+          </tr>
+          <tr>  
+                <td>street_address1</td> <td>{{ order.street_address1 }}</td>
+          </tr>
+          
+          <tr>  
+                <td>Street address 2</td> <td>{{ order.street_address2 }}</td>
+          </tr>
+          
+          <tr>  
+                <td>County </td> <td>{{ order.county }}</td>
+          </tr>
+     </thead>
+    
+      </table> 
+     <form method="POST">
+          <div id="credit-card-errors" style="display-none">
+             <div class="alert-message bloack-message error" id="stripe-error-message"></div>
+         </div>
+           {% csrf_token %}
+          <a href="{% url 'checkout:cancel_order' order.id %}" class="waves-effect waves-light btn">
+               <i class="material-icons white-text">cancel</i>
+                <i class="material-icons white-text">receipt</i>
+               <span class="hide-on-med-and-down">Cancel order</span>
+          </a>
+           
+           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+               data-key="{{ stripe_key }}"
+               data-description="A Django Charge"
+               data-amount="{{ total }}"
+               data-locale="auto"
+               data-currency="eur">
+           </script>
+     </form>
+</div>
+</div>
+{% endblock %}

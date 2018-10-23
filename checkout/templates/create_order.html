@@ -4,7 +4,6 @@
 {% block title_block %}Checkout {% endblock %}
 {% block content %}
 
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <div class="col s12 l9 tb">
 <h4>Checkout</h4>
@@ -33,21 +32,16 @@
      <form method="POST">
            <legend>Payment Details</legend>
           <div id="credit-card-errors" style="display-none">
-             <div class="alert-message bloack-message error" id="stripe-error-message"></div>
+             <div class="alert-message block-message error" id="stripe-error-message"></div>
          </div>
           {% csrf_token %}
           {{ form.user.as_hidden }}
           {{ form.as_p }}
-          <a class="waves-effect waves-light btn"><span class="hide-on-med-and-down">Back to cart</span>
+          <a href="{% url 'cart:cart_detail' %}" class="waves-effect waves-light btn"><span class="hide-on-med-and-down">Back to cart</span>
            <i class="material-icons white-text">keyboard_arrow_left</i>
            <i class="material-icons white-text">shopping_cart</i></a>
-           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-               data-key="{{ stripe_key }}"
-               data-description="A Django Charge"
-               data-amount="{{ total }}"
-               data-locale="auto"
-               data-currency="eur">
-           </script>
+           <button type="submit" name="_submit" class="btn">Submit</button>
+           
      </form>
 </div>
 </div>

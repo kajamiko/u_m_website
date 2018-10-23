@@ -28,12 +28,18 @@ Email: {{ user.email }}
                     <ul>
                     {% for order in orders %}
                        <li>  {{ order }} </li>
+                       {% if order.paid %}
+                       <li> Paid </li>
+                       {% else %}
+                       <li> Not paid </li>
+                       
+                       {% endif %}
                        <li>For tickets following: 
-                            <ul>
+                            <ol>
                             {% for item in order.return_items %}
                                  <li>{{ item }}</li>
                             {% endfor %}
-                            </ul>
+                            </ol>
                        </li>
                        
                     {% endfor %}

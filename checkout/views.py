@@ -12,7 +12,6 @@ stripe.api_key = settings.STRIPE_SECRET
 
 def create_order(request):
 
-     stripe_key= settings.STRIPE_PUBLISHABLE
      cart = Cart(request)
      total = cart.get_total() * 100
      if request.method=='POST':
@@ -20,38 +19,8 @@ def create_order(request):
           if form.is_valid():
                # a form is saved to a variable    
                order = form.save()
-          
-               try:
-                    customer = stripe.Charge.create(
-                         amount = total,
-                         currency = 'GBP',
-                         description = str(order.id),
-                         source=request.POST['stripeToken'],
-                         )
-
-               except stripe.error.CardError:
-                    messages.error(request, "Your card was declined")
-                
-               if customer:
-
-                    messages.error(request, "You have succesfully paid")
-               
-                    for item in cart:
-                         OrderItem.objects.create(
-                              order=order,
-                              ticket=item['ticket'],
-                              donation=item['donation']
-                              )
-                         upvote_ticket(item['ticket'].id)
-                    cart.clear()
-                    order.paid = True
-                    order.save()
-                    items = OrderItem.objects.filter(order=order)
-                    return render(request, 'created.html', {'order': order, 'items': items})
-               else:
-                    messages.error(request, "Unable to take payment")
+               return redirect("checkout:order_pay", order_id=order.id)
           else:
-          
                messages.error(request, "Some of your details are incorrect!")
      else:
           if request.user.is_authenticated:
@@ -72,4 +41,47 @@ def create_order(request):
           else:
                form = OrderCreateForm()
                
-     return render(request, 'create_order.html', {'form': form, 'total': total, 'stripe_key': stripe_key})
+     return render(request, 'create_order.html', {'form': form, 'total': total})
+
+def order_pay(request, order_id):
+   
+     stripe_key= settings.STRIPE_PUBLISHABLE
+     cart = Cart(request)
+     total = cart.get_total() * 100
+     order = get_object_or_404(Order, pk=order_id)
+     
+     if request.method=='POST':
+          
+          try:
+               customer = stripe.Charge.create(
+                         amount = total,
+                         currency = 'GBP',
+                         description = str(order.id),
+                         source=request.POST['stripeToken'],
+                         )
+          except stripe.error.CardError:
+               messages.error(request, "Your card was declined")
+               
+          if customer:
+               messages.error(request, "You have succesfully paid")
+               for item in cart:
+                    OrderItem.objects.create(
+                              order=order,
+                              ticket=item['ticket'],
+                              donation=item['donation']
+                              )
+                    upvote_ticket(item['ticket'].id)
+                    cart.clear()
+                    order.paid = True
+                    order.save()
+                    items = OrderItem.objects.filter(order=order)
+                    return render(request, 'created.html', {'order': order, 'items': items})
+          else:
+               messages.error(request, "Unable to take payment")
+     return render(request, 'order_pay.html', {'order': order, 'total': total, 'stripe_key': stripe_key})
+
+def cancel_order(request, order_id):
+     order = get_object_or_404(Order, pk=order_id)
+     order.delete()
+     return redirect('cart:cart_detail')
+     

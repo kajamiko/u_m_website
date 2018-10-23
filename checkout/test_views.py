@@ -14,6 +14,8 @@ class TestCheckoutView(TestCase):
      
      def setUp(self):
           self.client = Client()
+
+          
      
      def test_simple_rendering(self):
           """
@@ -66,7 +68,7 @@ class TestCheckoutView(TestCase):
      #      self.assertEqual(str(order), 'Order #1, for 1 item(s), total cost of 5.00.')
      #      self.assertEqual(str(order_item), "order id is 1, ticket's id is 1 - some feature")
           
-     def test_get_request_and_payas_a_user(self):
+     def test_get_request_and_pay_as_a_user(self):
           """
           Automated test for what happens if user is authenticated
           """
@@ -90,12 +92,13 @@ class TestCheckoutView(TestCase):
           ticket.save() 
           self.client.get(reverse('cart:add_to_cart', args=(ticket.id,)))
           session = self.client.session
-          data= {'full_name': 'test', 'phone_number': 'test', 'country': 'test', 'postcode': 'test',
-          'town_or_city': 'test', 'street_address1': 'test', 'county': 'test', 'stripeToken': token.id}
-          response = self.client.get(reverse('checkout:order_create'))
+          self.client.post(reverse('checkout:order'))
+          order = get_object_or_404(Order, pk=1)
+          data= { 'stripeToken': token.id}
+          response = self.client.get(reverse('checkout:order_pay', args=(order.id,)), data=data)
           
           # success, transaction visible on my stripe account
-          self.client.post(reverse('checkout:order_create'))
-          # order = get_object_or_404(Order, pk=1)
+         
+          # 
           # self.assertEqual(order.full_name, "test_from_profile")
           
