@@ -30,7 +30,9 @@ class TestOrderForm(TestCase):
           self.assertTrue(test_form.is_valid())
      
      def test_form_without_some_required_value(self):
-          
+          """
+          Tests form with no required value
+          """
           test_form = OrderCreateForm({'phone_number': 'test', 'country': 'test',
                'postcode': 'test', 'town_or_city': 'test', 'street_address1': 'test',
              'street_address2': 'test', 'county': 'test'})

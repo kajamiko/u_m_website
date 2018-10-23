@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for tickets/views.py: 77%</title>
+    <title>Coverage for tickets/views.py: 83%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>tickets/views.py</b> :
-            <span class="pc_cov">77%</span>
+            <span class="pc_cov">83%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             75 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">58 run</span>
-            <span class="mis shortkey_m button_toggle_mis">17 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">62 run</span>
+            <span class="mis shortkey_m button_toggle_mis">13 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -121,8 +121,8 @@
 <p id="n52" class="stm run hide_run"><a href="#n52">52</a></p>
 <p id="n53" class="pln"><a href="#n53">53</a></p>
 <p id="n54" class="stm run hide_run"><a href="#n54">54</a></p>
-<p id="n55" class="stm mis"><a href="#n55">55</a></p>
-<p id="n56" class="stm mis"><a href="#n56">56</a></p>
+<p id="n55" class="stm run hide_run"><a href="#n55">55</a></p>
+<p id="n56" class="stm run hide_run"><a href="#n56">56</a></p>
 <p id="n57" class="pln"><a href="#n57">57</a></p>
 <p id="n58" class="stm run hide_run"><a href="#n58">58</a></p>
 <p id="n59" class="pln"><a href="#n59">59</a></p>
@@ -170,8 +170,8 @@
 <p id="n101" class="stm mis"><a href="#n101">101</a></p>
 <p id="n102" class="pln"><a href="#n102">102</a></p>
 <p id="n103" class="stm run hide_run"><a href="#n103">103</a></p>
-<p id="n104" class="stm mis"><a href="#n104">104</a></p>
-<p id="n105" class="stm mis"><a href="#n105">105</a></p>
+<p id="n104" class="stm run hide_run"><a href="#n104">104</a></p>
+<p id="n105" class="stm run hide_run"><a href="#n105">105</a></p>
 <p id="n106" class="stm run hide_run"><a href="#n106">106</a></p>
 <p id="n107" class="pln"><a href="#n107">107</a></p>
 <p id="n108" class="stm run hide_run"><a href="#n108">108</a></p>
@@ -207,13 +207,13 @@
 <p id="t15" class="pln"><span class="str">        View returning tickets: either all of them, or filtered by variety.</span><span class="strut">&nbsp;</span></p>
 <p id="t16" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
 <p id="t17" class="stm run hide_run">        <span class="key">if</span> <span class="nam">variety</span><span class="op">==</span><span class="str">"features"</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t18" class="stm run hide_run">                <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">variety__exact</span><span class="op">=</span><span class="str">"F"</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'upvotes'</span><span class="op">,</span> <span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="stm run hide_run">                <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">variety__exact</span><span class="op">=</span><span class="str">"F"</span><span class="op">)</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">verified__exact</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'upvotes'</span><span class="op">,</span> <span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t19" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t20" class="stm run hide_run">        <span class="key">elif</span> <span class="nam">variety</span><span class="op">==</span><span class="str">"bugs"</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t21" class="stm run hide_run">                <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">variety__exact</span><span class="op">=</span><span class="str">"B"</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'upvotes'</span><span class="op">,</span> <span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t21" class="stm run hide_run">                <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">variety__exact</span><span class="op">=</span><span class="str">"B"</span><span class="op">)</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">verified__exact</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'upvotes'</span><span class="op">,</span> <span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t22" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t23" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t24" class="stm run hide_run">                <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">all</span><span class="op">(</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'upvotes'</span><span class="op">,</span> <span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="stm run hide_run">                <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">all</span><span class="op">(</span><span class="op">)</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">verified__exact</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'upvotes'</span><span class="op">,</span> <span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t25" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t26" class="stm run hide_run">        <span class="nam">paginator</span> <span class="op">=</span> <span class="nam">Paginator</span><span class="op">(</span><span class="nam">results</span><span class="op">,</span> <span class="num">5</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t27" class="stm run hide_run">        <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -244,8 +244,8 @@
 <p id="t52" class="stm run hide_run">                        <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="str">"tickets:comment_details"</span><span class="op">,</span> <span class="nam">comment_id</span><span class="op">=</span><span class="nam">added_comment</span><span class="op">.</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t53" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t54" class="stm run hide_run">                <span class="key">if</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">is_authenticated</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t55" class="stm mis">                        <span class="nam">data</span> <span class="op">=</span> <span class="op">{</span><span class="str">'user'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">,</span> <span class="str">'author'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">username</span> <span class="op">}</span><span class="strut">&nbsp;</span></p>
-<p id="t56" class="stm mis">                        <span class="nam">form</span> <span class="op">=</span> <span class="nam">CommentForm</span><span class="op">(</span><span class="nam">initial</span><span class="op">=</span><span class="nam">data</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t55" class="stm run hide_run">                        <span class="nam">data</span> <span class="op">=</span> <span class="op">{</span><span class="str">'user'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">,</span> <span class="str">'author'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">username</span> <span class="op">}</span><span class="strut">&nbsp;</span></p>
+<p id="t56" class="stm run hide_run">                        <span class="nam">form</span> <span class="op">=</span> <span class="nam">CommentForm</span><span class="op">(</span><span class="nam">initial</span><span class="op">=</span><span class="nam">data</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t57" class="pln">                <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t58" class="stm run hide_run">                        <span class="nam">form</span> <span class="op">=</span> <span class="nam">CommentForm</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t59" class="pln"><span class="strut">&nbsp;</span></p>
@@ -293,15 +293,15 @@
 <p id="t101" class="stm mis">                        <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="str">"tickets:comment_details"</span><span class="op">,</span> <span class="nam">comment_id</span><span class="op">=</span><span class="nam">updated_comment</span><span class="op">.</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t102" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t103" class="stm run hide_run">                <span class="key">if</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">is_authenticated</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t104" class="stm mis">                        <span class="nam">data</span> <span class="op">=</span> <span class="op">{</span><span class="str">'user'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">,</span> <span class="str">'author'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">username</span><span class="op">,</span> <span class="str">'title'</span><span class="op">:</span> <span class="nam">comment</span><span class="op">.</span><span class="nam">title</span><span class="op">,</span> <span class="str">'content'</span><span class="op">:</span> <span class="nam">comment</span><span class="op">.</span><span class="nam">content</span> <span class="op">}</span><span class="strut">&nbsp;</span></p>
-<p id="t105" class="stm mis">                        <span class="nam">form</span> <span class="op">=</span> <span class="nam">CommentForm</span><span class="op">(</span><span class="nam">initial</span><span class="op">=</span><span class="nam">data</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t104" class="stm run hide_run">                        <span class="nam">data</span> <span class="op">=</span> <span class="op">{</span><span class="str">'user'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">,</span> <span class="str">'author'</span><span class="op">:</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">username</span><span class="op">,</span> <span class="str">'title'</span><span class="op">:</span> <span class="nam">comment</span><span class="op">.</span><span class="nam">title</span><span class="op">,</span> <span class="str">'content'</span><span class="op">:</span> <span class="nam">comment</span><span class="op">.</span><span class="nam">content</span> <span class="op">}</span><span class="strut">&nbsp;</span></p>
+<p id="t105" class="stm run hide_run">                        <span class="nam">form</span> <span class="op">=</span> <span class="nam">CommentForm</span><span class="op">(</span><span class="nam">initial</span><span class="op">=</span><span class="nam">data</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t106" class="stm run hide_run">        <span class="key">return</span> <span class="nam">render</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">'comment_detail.html'</span><span class="op">,</span> <span class="op">{</span><span class="str">'comment'</span><span class="op">:</span> <span class="nam">comment</span><span class="op">,</span> <span class="str">'form'</span><span class="op">:</span> <span class="nam">form</span><span class="op">}</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t107" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t108" class="stm run hide_run"><span class="key">def</span> <span class="nam">search_for_ticket</span><span class="op">(</span><span class="nam">request</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t109" class="pln">        <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t110" class="pln"><span class="str">        View containing logic for searching through tickets.</span><span class="strut">&nbsp;</span></p>
 <p id="t111" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t112" class="stm run hide_run">        <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">issue__icontains</span><span class="op">=</span><span class="nam">request</span><span class="op">.</span><span class="nam">GET</span><span class="op">[</span><span class="str">'q'</span><span class="op">]</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t112" class="stm run hide_run">        <span class="nam">results</span> <span class="op">=</span> <span class="nam">Ticket</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">issue__icontains</span><span class="op">=</span><span class="nam">request</span><span class="op">.</span><span class="nam">GET</span><span class="op">[</span><span class="str">'q'</span><span class="op">]</span><span class="op">)</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">verified__exact</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="op">.</span><span class="nam">order_by</span><span class="op">(</span><span class="str">'-date_created'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t113" class="stm run hide_run">        <span class="nam">paginator</span> <span class="op">=</span> <span class="nam">Paginator</span><span class="op">(</span><span class="nam">results</span><span class="op">,</span> <span class="num">5</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t114" class="stm run hide_run">        <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t115" class="stm run hide_run">                <span class="nam">page</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">GET</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'page'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
@@ -320,7 +320,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-10-22 12:00
+            created at 2018-10-23 10:03
         </p>
     </div>
 </div>

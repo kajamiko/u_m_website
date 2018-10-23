@@ -102,11 +102,11 @@ class TestCartClass(TestCase):
           cart.clear()
           self.assertEqual(len(cart), 0)
      
-     def cart_save(self):
-         ticket = Ticket(variety='F', issue='some extra feature')
-         ticket.save()
-         cart = Cart(self.request)
-         cart[str(ticket.id)] = {'donation': 5}
-         cart.save()
-         assertIn(ticket, cart)
+     # def test_cart_save(self):
+     #    ticket = Ticket(variety='F', issue='some extra feature')
+     #    ticket.save()
+     #    cart = Cart(self.request)
+     #    cart.add(ticket)
+     #    cart.save()
+     #    self.assertIn(ticket, cart)
           

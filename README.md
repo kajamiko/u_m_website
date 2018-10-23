@@ -14,7 +14,7 @@ Usos Modern website is a project run by USOS Modern App's developers, to help ma
 ## UX
 
 The project's goal is to provide an efficiently working issue tracker for a mobile app.
-To achieve it, I designed a system that allows users to report issues and suggest new features. They can comment and upvote, and donate features they would like to see in the app.
+To achieve it, I designed a system that allows users to report issues and suggest new features. They can comment and upvote, and donate features they would like to see in the app. They can also see 
 
 ## User Stories
 
@@ -135,7 +135,7 @@ For app's test version,  the 'Ticket' model is slightly altered: there is `date_
 
 #### Bugs
 
-1. During testing, I found out that form's automated tests are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
+1. During testing, I found out that form's automated tests are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). I had also experienced problem with form testing in accounts app.  In all cases, forms seem to work when testing views and in live tests.
 
 2. Another thing is a problem with pygal.DateLine object, as it throws an error when the database is empty. In the end I decided to catch the error and not to render the chart at all if the database is empty.  
 
@@ -147,11 +147,15 @@ When displaying some pages, a jQuery error may appear in the console. I have not
 
 To deploy the project, I have to find a way to keep static file in place. I created a Amazon S3 bucket for this, and added new configuration variables to the project's settings.py file.
 
-The database setting has been changed from default Django file to Heroku Postgres Database.
+The database setting has been changed from default Django file to Heroku Postgres Database. I also populated it with some sample data.
 In development, I have used a separate configuration file to keep sensitive data. These variables are set as Heroku Confog Vars. 
 
-Suprisingly, I did not encounter any problems with the code itself during deployment, and I did not set a separate git branch for the purpose. 
-The same code works locally on Cloud9 and on Heroku.
+Suprisingly, I did not encounter any problems with the code itself during deployment.
+
+
+However, I created a separeate branch that I used temporarily for Heroku deployment. The only difference from the master branch is the `date_created.editable = True` line in tickets/models.py. It allowed me to add tickets with various `date_created ` field in Heroku's database, for demonstration purposes.
+
+Later on, I've changed Heroku deployed branch back to master, without the the date hack.
 
 ## Credits
 

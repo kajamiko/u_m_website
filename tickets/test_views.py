@@ -13,9 +13,9 @@ class TestTicketViews(TestCase):
 		"""
 		Tests displaying all tickets
 		"""
-		ticket = Ticket(variety='B', issue='serious issue')
+		ticket = Ticket(variety='B', issue='serious issue', verified=True)
 		ticket.save()
-		ticket1 = Ticket(variety='F', issue='serious feature')
+		ticket1 = Ticket(variety='F', issue='serious feature', verified=True)
 		ticket1.save()
 		homepage = self.client.get(reverse('tickets:all_tickets'))
 		self.assertEqual(homepage.status_code, 200)
@@ -26,9 +26,9 @@ class TestTicketViews(TestCase):
 		"""
 		Tests filtering by variety : feature.
 		"""
-		ticket_f = Ticket(variety='F', issue='some feature')
+		ticket_f = Ticket(variety='F', issue='some feature', verified=True)
 		ticket_f.save()
-		ticket_b = Ticket(variety='B', issue='serious issue')
+		ticket_b = Ticket(variety='B', issue='serious issue', verified=True)
 		ticket_b.save()
 		response = self.client.get(reverse('tickets:get_features', kwargs={'variety': 'features'}))
 		self.assertTemplateUsed(response, 'ticket_list.html')
@@ -39,9 +39,9 @@ class TestTicketViews(TestCase):
 		"""
 		Tests filtering by variety: bugs.
 		"""
-		ticket_f = Ticket(variety='F', issue='some feature')
+		ticket_f = Ticket(variety='F', issue='some feature', verified=True)
 		ticket_f.save()
-		ticket_b = Ticket(variety='B', issue='serious issue')
+		ticket_b = Ticket(variety='B', issue='serious issue', verified=True)
 		ticket_b.save()
 		response = self.client.get(reverse('tickets:get_bugs', kwargs={'variety': 'bugs'}))
 		self.assertTemplateUsed(response, 'ticket_list.html')
@@ -116,6 +116,20 @@ class TestTicketViews(TestCase):
 		page = self.client.post('/tickets/{0}/'.format(ticket.id), {'author': 'test', 'content': 'test_content'})
 		self.assertEqual(page.status_code, 200)
 	
+	def test_adding_tickets_as_user(self):
+		user = User.objects.create_user('foo', 'myemail@test.com', 'bar')
+		self.client.login(username='foo', password='bar')
+		ticket = Ticket(variety='B', issue='serious issue')
+		ticket.save()
+		self.client.get('/tickets/{0}/'.format(ticket.id))
+		page = self.client.post('/tickets/{0}/'.format(ticket.id), {'author': 'test', 'content': 'test_content', 'title': 'test_title'})
+		comment = get_object_or_404(Comment, pk=1)
+		self.assertEqual(page.status_code, 302)
+		self.assertEqual(comment.content, 'test_content')
+		page = self.client.post('/tickets/{0}/'.format(ticket.id), {'author': 'test', 'content': 'test_content'})
+		self.assertEqual(page.status_code, 200)
+		
+		
 	def test_comment_details(self):
 		"""
 		Tests comment page view.
@@ -127,7 +141,7 @@ class TestTicketViews(TestCase):
 		page = self.client.get('/tickets/comment/1')
 		self.assertEqual(page.status_code, 200)
 		
-	def adding_comment_as_a_user(self):
+	def test_adding_comment_as_a_user(self):
 		"""
 		Tests adding ticket as a user.
 		"""
@@ -146,7 +160,7 @@ class TestTicketViews(TestCase):
 		"""
 		Tests searching functionality.
 		"""
-		ticket = Ticket(variety='B', issue='serious issue')
+		ticket = Ticket(variety='B', issue='serious issue', verified=True)
 		ticket.save()
 		response = self.client.get("/tickets/search", {'q': 'issue'})
 		self.assertTemplateUsed(response, 'ticket_list.html')
