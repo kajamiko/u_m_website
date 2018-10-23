@@ -16,7 +16,7 @@ class Ticket(models.Model):
 	variety = models.CharField(max_length=7, choices=TICKET_VARIETIES_CHOICES, blank=False)
 	upvotes = models.IntegerField(default=0)
 	date_created = models.DateField(auto_now_add=True)
-	# date_created.editable = True
+	date_created.editable = True
 	date_verified = models.DateField(null=True)
 	date_start_dev = models.DateField(null=True,blank=True)
 	date_done = models.DateField(null=True,  blank=True)
