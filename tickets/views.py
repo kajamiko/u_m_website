@@ -109,7 +109,7 @@ def search_for_ticket(request):
 	"""
 	View containing logic for searching through tickets.
 	"""
-	results = Ticket.objects.filter(issue__icontains=request.GET['q']).order_by('-date_created')
+	results = Ticket.objects.filter(issue__icontains=request.GET['q']).filter(verified__exact=True).order_by('-date_created')
 	paginator = Paginator(results, 5)
 	try:
 		page = request.GET.get('page')

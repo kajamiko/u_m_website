@@ -14,7 +14,7 @@ Usos Modern website is a project run by USOS Modern App's developers, to help ma
 ## UX
 
 The project's goal is to provide an efficiently working issue tracker for a mobile app.
-To achieve it, I designed a system that allows users to report issues and suggest new features. They can comment and upvote, and donate features they would like to see in the app.
+To achieve it, I designed a system that allows users to report issues and suggest new features. They can comment and upvote, and donate features they would like to see in the app. They can also see 
 
 ## User Stories
 
