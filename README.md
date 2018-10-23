@@ -11,16 +11,16 @@ Usos Modern website is a project run by USOS Modern App's developers, to help ma
 
 
 
-Ad cat icon: changed from materialize to fontawesome because I wanted a badge with info on a cart icon
-
 UX
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+
+The project's goal is to provide an efficiently working issue tracker for a mobile app.
+TO achieve it, I ha
 
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
 
 As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
+Mockups for the project are ava
 ## Features
 
 1. Home - on this part of the project, users can find all informations about the website and app that the website is created for, including statistics.
@@ -119,16 +119,6 @@ The project has been tested carefuly. For each app, in the app's main directiry 
 - `test_views.py` - where tests for views' templates, POST/GET request and expected display can be found.
 - `test*.py` - tests for other functions
 
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
-
 For different screen sizes, I designed a sidebar and made sure it's always visible on wide screen, but hidden and available to toggle on smaller screens.
 
 Materialize bug:
@@ -140,7 +130,7 @@ When displaying some pages, a jQuery error may appear in the console. I have not
 
 During testing, I found out that form's automated results are not giving expected results, when it comes to adding a not required foreign key(see comments in test_forms.py). However, it seems to work when testing views and in live tests.
 
-Another thing is a problem with pygal.DateLine object, when there is no data passed. It throws an error
+Another thing is a problem with pygal.DateLine object, as it throws an error when the database is empty. In the end I decided to catch the error and not to render the chart at all if the database is empty.  
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
@@ -163,12 +153,16 @@ The same code works locally on Cloud9 and on Heroku.
 
 
 2. Charts
- For charts logic, I have copied and modified the example made by Ray Chen and published on [Hackernoon](https://hackernoon.com/server-rendered-charts-in-django-2604f903389d). All the modifications are made by myself.
+ For **Pygal** charts logic, I have copied and modified the example made by Ray Chen and published on [Hackernoon](https://hackernoon.com/server-rendered-charts-in-django-2604f903389d). All the modifications are made by myself.
 
 
-Content
-The text for section Y was copied from the Wikipedia article Z
-Media
-The photos used in this site were obtained from [Pixabay]()
-Acknowledgements
-I received inspiration for this project from X
+## Content
+
+In most cases, project uses Materialize icons. W3blog app uses Bootstrap icons. Project is using [Fontawesome](https://fontawesome.com/) in some cases, e.g. cart icon, as it was easier to implement a badge with content items number.
+
+## Media
+The photos used in this site were obtained from [Pixabay](https://pixabay.com) and some from [Unsplash](https://unsplash.com/).
+
+## Acknowledgements
+
+My inspiration, at least visual, for this project was Django's [issue tracker](https://code.djangoproject.com/query).

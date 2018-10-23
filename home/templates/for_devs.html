@@ -4,11 +4,17 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static '/css/project.css' %}">
-<div class="col s12 l9">
-     <h4>Hello! We are looking for developers!</h4>
-    <div  class="col s12 m10 l10">
-          
+
+     <h4>Hello! We are looking for developers</h4>
+    <div  class="col s12 m12 offset-m1 l9">
+          <img class="col offset-m1 offset-l1 s12 m8 l8" src="{% static '/images/homepage/looking-for-a-job.jpg' %}">
+          <div class="col s12 m8 l8 offset-m1 offset-l1">
+               <h6>USOS Modern team is looking for enthusiastic developers and testers.</h6>
+               <p>If you consider yourself a developer coding in Python and Javascript, and you're not necesserarily experienced - that may be a job for you!</p>              
+          </div>
           </div>
      
-  </div>
+          
+
+  
      {% endblock %}
