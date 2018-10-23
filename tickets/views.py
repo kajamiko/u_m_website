@@ -15,13 +15,13 @@ def get_tickets(request, variety=''):
 	View returning tickets: either all of them, or filtered by variety.
 	"""
 	if variety=="features":
-		results = Ticket.objects.filter(variety__exact="F").order_by('upvotes', '-date_created')
+		results = Ticket.objects.filter(variety__exact="F").filter(verified__exact=True).order_by('upvotes', '-date_created')
 		
 	elif variety=="bugs":
-		results = Ticket.objects.filter(variety__exact="B").order_by('upvotes', '-date_created')
+		results = Ticket.objects.filter(variety__exact="B").filter(verified__exact=True).order_by('upvotes', '-date_created')
 		
 	else:
-		results = Ticket.objects.all().order_by('upvotes', '-date_created')
+		results = Ticket.objects.all().filter(verified__exact=True).order_by('upvotes', '-date_created')
 		
 	paginator = Paginator(results, 5)
 	try:

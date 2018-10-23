@@ -149,8 +149,11 @@ To deploy the project, I have to find a way to keep static file in place. I crea
 The database setting has been changed from default Django file to Heroku Postgres Database.
 In development, I have used a separate configuration file to keep sensitive data. These variables are set as Heroku Confog Vars. 
 
-Suprisingly, I did not encounter any problems with the code itself during deployment, and I did not set a separate git branch for the purpose. 
-The same code works locally on Cloud9 and on Heroku.
+Suprisingly, I did not encounter any problems with the code itself during deployment.
+
+
+However, I created a separeate branch for Heroku deployment. The only difference from the master branch is the `date_created.editable = True` line in tickets/models.py. It allowed me to add tickets with various `created_date` field in Heroku's database, for demonstration purposes.
+
 
 ## Credits
 
